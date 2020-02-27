@@ -59,7 +59,7 @@ namespace SoulEngine
 
 		private void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.gameObject.HasTag (_Tags))
+			if (other.gameObject.HasTags (_Tags))
 			{
 				_IsRescuing = true;
 			}
@@ -67,7 +67,7 @@ namespace SoulEngine
 
 		private void OnTriggerExit2D (Collider2D other)
 		{
-			if (other.gameObject.HasTag (_Tags))
+			if (other.gameObject.HasTags (_Tags))
 			{
 				_IsRescuing = false;
 			}
