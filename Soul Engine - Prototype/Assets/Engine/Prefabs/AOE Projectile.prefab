@@ -279,6 +279,7 @@ MonoBehaviour:
   _ShouldDestroy: 0
   _Tags:
   - Player
+  _Distance: 1.25
   _ExplosionDistances:
     Min: -5
     Max: 10

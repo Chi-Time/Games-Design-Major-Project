@@ -70,7 +70,7 @@ namespace SoulEngine
 
 		protected void OnTriggerEnter2D (Collider2D other)
 		{
-			if (HasTag (other))
+			if (other.gameObject.HasTags (_Tags))
 			{
 				EnteredCollider (other);
 			}
@@ -78,23 +78,10 @@ namespace SoulEngine
 
 		protected void OnTriggerExit2D (Collider2D other)
 		{
-			if (HasTag (other))
+			if (other.gameObject.HasTags (_Tags))
 			{
 				ExitedCollider (other);
 			}
-		}
-
-		protected virtual bool HasTag (Collider2D other)
-		{
-			foreach (var currentTag in _Tags)
-			{
-				if (other.CompareTag (currentTag))
-				{
-					return true;
-				}
-			}
-
-			return false;
 		}
 
 		protected abstract void EnteredCollider (Collider2D other);

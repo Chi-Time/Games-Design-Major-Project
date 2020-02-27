@@ -130,7 +130,12 @@ namespace Assets.Code.Classes.Utilities
                 var poolObject = _InactivePool.FirstOrDefault ();
                 _InactivePool.Remove (poolObject);
                 _ActivePool.Add (poolObject);
-                poolObject.gameObject.SetActive (true);
+                //BUG: Set transformations BEFORE setting the object as active.
+                // IF we don't do this, then we transform the object after it's OnEnable has been called and screw up any and all calculations which are being performed.
+                // This is a naff bug and a custom callback will need to be added so that we "get" bulletcomponents from the pool
+                // And then proceed to fire a function when we want them to setup for use such as a .Construct () method.
+                // This means that they can then do any and all of the calculations that they need to without fear of worrying about things moving.
+                //poolObject.gameObject.SetActive (true);
 
                 return poolObject;
             }

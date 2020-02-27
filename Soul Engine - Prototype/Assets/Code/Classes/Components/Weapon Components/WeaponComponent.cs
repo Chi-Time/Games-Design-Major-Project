@@ -7,6 +7,9 @@ namespace SoulEngine
 {
     public abstract class WeaponComponent : MonoBehaviour, IRequireComponents
     {
+        //Shader.PropertyToID (_WeaponName);
+        //NOT: Animator.HashToString () - https://forum.unity.com/threads/animator-stringtohash-performance-collisions.516016/
+        public string WeaponName => _WeaponName;
         public GameObject GameObject => gameObject;
 
         [Tooltip("The name of this weapon in the game."), SerializeField]

@@ -32,12 +32,32 @@ public static class Extensions
     /// <summary>Determines if the gameobject has any of the tags provided.</summary>
     /// <param name="gameObject"></param>
     /// <param name="tags">The tags to check against.</param>
-    /// <returns>True: If the object has one of the given tags.</returns>
-    public static bool HasTag (this GameObject gameObject, string[] tags)
+    /// <returns>True: If the object has one or more of the given tags.</returns>
+    public static bool HasTags (this GameObject gameObject, string[] tags)
     {
         foreach (var currentTag in tags)
         {
             if (gameObject.CompareTag (currentTag))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    //TODO: Compare efficiency of this versus normal string comparisons.
+    /// <summary>Determines if the gameobject has any of the tags provided.</summary>
+    /// <param name="gameObject"></param>
+    /// <param name="tags">The tags to check against.</param>
+    /// <returns>True: If the object has one or more of the given tags.</returns>
+    public static bool HasTags (this GameObject gameObject, Tags[] tags)
+    {
+        var enumTag = (Tags)Enum.Parse (typeof(Tags), gameObject.tag);
+        
+        foreach (var currentTag in tags)
+        {
+            if (enumTag == currentTag)
             {
                 return true;
             }

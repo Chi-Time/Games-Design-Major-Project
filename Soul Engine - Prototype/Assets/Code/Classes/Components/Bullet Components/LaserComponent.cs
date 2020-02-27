@@ -35,7 +35,7 @@ namespace SoulEngine
 		{
 			var hit = Physics2D.Raycast (_Transform.position, Vector2.up, _Range);
 			
-			if (HasTag (hit.collider))
+			if (hit.collider.gameObject.HasTags (_Tags))
 			{
 				EnteredCollider (hit.collider);
 			}

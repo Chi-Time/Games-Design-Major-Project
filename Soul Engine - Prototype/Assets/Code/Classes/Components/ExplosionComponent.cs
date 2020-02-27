@@ -24,6 +24,7 @@ namespace SoulEngine
 		[Tooltip ("The max size of the explosion radius"), SerializeField]
 		private float _ExplosionSize = 0.0f;
 
+		private bool _CanDamage = false;
 		private float _StepLength = 0.0f;
 		private Transform _Transform = null;
 		private Vector2 _CachedScale = Vector2.zero;
@@ -52,6 +53,7 @@ namespace SoulEngine
 
 		private void OnEnable ()
 		{
+			_CanDamage = true;
 			_StepLength = _ExplosionLength * 0.5f;
 			Invoke (nameof(Cull), _ExplosionLength);
 			StartCoroutine (ScaleTo (Vector2.one * _ExplosionSize));
@@ -110,10 +112,11 @@ namespace SoulEngine
 
 		private void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.gameObject.HasTag (Tags))
+			if (other.gameObject.HasTags (Tags) && _CanDamage)
 			{
 				//TODO: Figure out how to damage player when not using a bullet component to deal the damage.
 				LevelSignals.OnEntityHit?.Invoke (this, other.gameObject);
+				_CanDamage = false;
 			}
 		}
 	}

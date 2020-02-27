@@ -2,6 +2,7 @@
 
 public static class Approximation
 {
+    //BUG: This is broken as it can sometimes fall outside the bounds and never get caught as true. Consider adding in a maximum value.
     /// <summary>Determines if a value is approximately equal to another in a given range.</summary>
     /// <param name="a">The first value to compare.</param>
     /// <param name="b">The second value to compare.</param>

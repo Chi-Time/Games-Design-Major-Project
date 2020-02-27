@@ -38,19 +38,29 @@ namespace SoulEngine
                 }
             }
         }
+        
+        /// <summary> Switches the currently equipped weapon in the system to the new one specified if it exists. </summary>
+        /// <param name="id">The ID of the weapon to switch to.</param>
+        public void SwitchWeapon (int id)
+        {
+            foreach (var weapon in _Weapons)
+            {
+                if (weapon.GetInstanceID () == id)
+                {
+                    _CurrentWeapon = weapon;
+                }
+            }
+        }
 
         /// <summary> Switches the currently equipped weapon in the system to the new one specified if it exists. </summary>
-        /// <param name="component">The new weapon type to switch to.</param>
-        public void SwitchWeapon (WeaponComponent component)
+        /// <param name="name">The name of the weapon to switch to.</param>
+        public void SwitchWeapon (string name)
         {
-            if (component != null)
+            foreach (var weapon in _Weapons)
             {
-                foreach (var weapon in _Weapons)
+                if (weapon.WeaponName == name)
                 {
-                    if (weapon.GetType () == component.GetType ())
-                    {
-                        _CurrentWeapon = weapon;
-                    }
+                    _CurrentWeapon = weapon;
                 }
             }
         }
@@ -69,6 +79,38 @@ namespace SoulEngine
         {
             if (component != null)
                 _Weapons.Add (component);
+        }
+
+        /// <summary>Determines if the system contains a weapon with the given ID.</summary>
+        /// <param name="id">The unique instance ID of the weapon component.</param>
+        /// <returns>True: If the given ID matches with one in the system.</returns>
+        public bool HasWeapon (int id)
+        {
+            foreach (var weapon in _Weapons)
+            {
+                if (weapon.GetInstanceID () == id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
+        /// <summary>Determines if the system contains a weapon with the given name.</summary>
+        /// <param name="name">The name of the weapon component.</param>
+        /// <returns>True: If the given name matches with one in the system.</returns>
+        public bool HasWeapon (string name)
+        {
+            foreach (var weapon in _Weapons)
+            {
+                if (weapon.WeaponName == name)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

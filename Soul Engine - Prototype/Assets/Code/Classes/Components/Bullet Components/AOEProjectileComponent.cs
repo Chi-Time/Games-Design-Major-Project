@@ -7,14 +7,15 @@ namespace SoulEngine
 	{
 		[Header ("AOE Settings")]
 		[Space (2)]
-		[Tooltip ("The min and max distance a flak explosion can occur from the point of firing."), SerializeField]
-		private Boundary _ExplosionDistances = Boundary.Zero;
+		[Tooltip ("The random distance the explosion can be from it's target."), SerializeField]
+		private float _Distance = 1.0f;
 		[Tooltip ("The marker to display the current explosion."), SerializeField]
 		private Transform _Marker = null;
 		[Tooltip ("The explosion to spawn on detonation"), SerializeField]
 		private ExplosionComponent _Explosion = null;
 
-		private bool _WasFired = false;
+		private bool _WasFired = false; 
+		private Transform _Target = null;
 		private Collider2D _Collider2D = null;
 
 		protected override void Awake ()
@@ -30,17 +31,37 @@ namespace SoulEngine
 		//TODO: Flak and AOE projectiles share many similarities consider sharing the code between the two or abstracting them into a seperate component.
 		protected override void OnEnable ()
 		{
+			CacheTarget ();
 			var position = SelectTargetPosition ();
-
-			_WasFired = false;
-			_Collider2D.enabled = true;
-			_Explosion.Construct (_Damage, _Tags);
-			_Explosion.transform.position = position;
-			_Marker.gameObject.SetActive (true);
-			_Marker.position = position;
-			_Transform.position = _Transform.parent.position;
+			SetupBullet ();
+			SetupMarker (ref position);
+			SetupExplosion (ref position);
 
 			Invoke (nameof(Explode), _Lifetime);
+		}
+		
+		private void CacheTarget ()
+		{
+			_Target = FindObjectOfType<PlayerController> ().transform; 
+		}
+
+		private void SetupBullet ()
+		{
+			_WasFired = false;
+			_Collider2D.enabled = true;
+			_Transform.position = _Transform.parent.position;
+		}
+
+		private void SetupMarker (ref Vector3 position)
+		{
+			_Marker.gameObject.SetActive (true);
+			_Marker.position = position;
+		}
+
+		private void SetupExplosion (ref Vector3 position)
+		{
+			_Explosion.Construct (_Damage, _Tags);
+			_Explosion.transform.position = position;
 		}
 
 		protected override void OnDisable ()
@@ -53,9 +74,10 @@ namespace SoulEngine
 
 		private Vector3 SelectTargetPosition ()
 		{
-			return Random.insideUnitCircle * _ExplosionDistances.Max;
+			return _Target.position + (Vector3)Random.insideUnitCircle * _Distance;
 		}
 
+		//TODO: Improve this as using a WasFired is ugly and needless.
 		private void Update ()
 		{
 			if (_WasFired && _Explosion.isActiveAndEnabled == false)

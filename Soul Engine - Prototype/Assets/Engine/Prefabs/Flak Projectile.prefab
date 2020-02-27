@@ -81,13 +81,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Damage: 0
-  _Speed: 10
+  _Speed: 13
   _Lifetime: 15
   _ShouldDestroy: 0
-  _Tags: []
-  _ExplosionDistances:
-    Min: -3
-    Max: 5
+  _Tags:
+  - Player
+  _IsPlayerProjectile: 0
+  _ExplosionDistance: 1
   _Marker: {fileID: 1359761970840372918}
   _Explosion: {fileID: 1359761970786077998}
 --- !u!50 &1359761970551953271

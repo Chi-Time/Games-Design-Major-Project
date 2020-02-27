@@ -14,5 +14,6 @@ namespace SoulEngine
 		public static Action<bool, float> OnEntityBubbled;
 		public static Action<GameObject> OnResourceCollected;
 		public static Action<IDamage, GameObject> OnEntityHit;
+		//TODO: Consider implementing custom collision callback which is called when any ontriggerenter is and passes an extended collider with better enum based tags instead.
 	}
 }
