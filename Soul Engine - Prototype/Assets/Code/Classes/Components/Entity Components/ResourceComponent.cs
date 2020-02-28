@@ -15,6 +15,8 @@ namespace SoulEngine
 		[Tooltip ("The tag to look for when colliding with the player."), SerializeField]
 		private string _PlayerTag = "Player";
 
+		private TagComponent _TagComponent = null;
+
 		public IEnumerable<Type> RequiredComponents ()
 		{
 			return new Type[]
@@ -26,6 +28,7 @@ namespace SoulEngine
 		private void Awake ()
 		{
 			GetComponent<Collider2D> ().isTrigger = true;
+			_TagComponent = GetComponent<TagComponent> ();
 		}
 
 		private void Collect ()
@@ -37,7 +40,7 @@ namespace SoulEngine
 
 		private void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.CompareTag (_PlayerTag))
+			if (other.HasTags (_TagComponent.Tags))
 			{
 				Collect ();
 			}

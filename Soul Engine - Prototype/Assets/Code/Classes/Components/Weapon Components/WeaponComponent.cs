@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Schema;
-using Assets.Code.Classes.Utilities;
 using UnityEngine;
 
 namespace SoulEngine
