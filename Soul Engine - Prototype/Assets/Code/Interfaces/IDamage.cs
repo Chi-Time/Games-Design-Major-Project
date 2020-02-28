@@ -1,6 +1,6 @@
 ﻿namespace SoulEngine
 {
-	public interface IDamage : ITaggable
+	public interface IDamage
 	{
 		//TODO: Add a difficulty enum later for additional handling of difficulty curve logic.
 		/// <summary>The damage this projectile inflicts.</summary>

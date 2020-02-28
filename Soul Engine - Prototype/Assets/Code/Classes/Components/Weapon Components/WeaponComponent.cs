@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using Assets.Code.Classes.Utilities;
 using UnityEngine;
 
 namespace SoulEngine
 {
-    public abstract class WeaponComponent : MonoBehaviour, IRequireComponents
+    public abstract class WeaponComponent : MonoBehaviour
     {
         //Shader.PropertyToID (_WeaponName);
         //NOT: Animator.HashToString () - https://forum.unity.com/threads/animator-stringtohash-performance-collisions.516016/
         public string WeaponName => _WeaponName;
-        public GameObject GameObject => gameObject;
 
         [Tooltip("The name of this weapon in the game."), SerializeField]
         protected string _WeaponName = "";
@@ -26,14 +26,6 @@ namespace SoulEngine
         protected Transform _Transform = null;
         /// <summary>The pool of bullets for this weapon.</summary>
         protected ObjectPool<Transform>[] _BulletPools = null;
-
-        public IEnumerable<Type> RequiredComponents ()
-        {
-            return new Type[]
-            {
-                typeof (Collider),
-            };
-        }
 
         protected void Awake ()
         {

@@ -8,7 +8,6 @@ namespace SoulEngine
 	{
 		/// <summary>The damage the projectile inflicts.</summary>
 		public int Damage => _Damage;
-		public string[] Tags => _Tags;
 		public GameObject GameObject => gameObject;
 
 		[Header ("Bullet Settings")]
@@ -20,18 +19,17 @@ namespace SoulEngine
 		protected float _Lifetime = 0.0f;
 		[Tooltip ("The various tags this projectile can collide with."), SerializeField]
 		protected bool _ShouldDestroy = false;
-		[Tooltip ("Should the projectile be destroyed after dying? Or culled."), SerializeField]
-		protected string[] _Tags = null;
 
 		protected Transform _Transform = null;
 		protected Rigidbody2D _Rigidbody2D = null;
+		protected TagComponent _TagComponent = null;
 
 		public IEnumerable<Type> RequiredComponents ()
 		{
 			return new Type[]
 			{
 				typeof (Rigidbody2D),
-				typeof (Collider2D),
+				typeof (TagComponent),
 			};
 		}
 
@@ -40,6 +38,7 @@ namespace SoulEngine
 			SetupRigidbody ();
 			_Transform = GetComponent<Transform> ();
 			GetComponent<Collider2D> ().isTrigger = true;
+			_TagComponent = GetComponent<TagComponent> ();
 		}
 
 		private void SetupRigidbody ()
@@ -70,7 +69,7 @@ namespace SoulEngine
 
 		protected void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.gameObject.HasTags (_Tags))
+			if (other.HasTags (_TagComponent.Tags))
 			{
 				EnteredCollider (other);
 			}
@@ -78,7 +77,7 @@ namespace SoulEngine
 
 		protected void OnTriggerExit2D (Collider2D other)
 		{
-			if (other.gameObject.HasTags (_Tags))
+			if (other.HasTags (_TagComponent.Tags))
 			{
 				ExitedCollider (other);
 			}

@@ -70,7 +70,7 @@ namespace SoulEngine
 		private void SetupExplosion (ref Vector3 position)
 		{
 			//TODO: Find a way around doing this, constructing the explosion is needless and prone to bugs.
-			_Explosion.Construct (_Damage, _Tags);
+			_Explosion.Construct (_Damage, _TagComponent.Tags);
 			_Explosion.transform.position = position;
 		}
 		

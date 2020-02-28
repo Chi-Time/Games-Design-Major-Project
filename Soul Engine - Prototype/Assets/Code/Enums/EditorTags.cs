@@ -1,4 +1,4 @@
-public enum Tags
+public enum EditorTags
 {
 	Untagged, 
 	Respawn, 
@@ -8,4 +8,6 @@ public enum Tags
 	Player, 
 	GameController, 
 	Enemy, 
+	Magnet, 
+	Resource, 
 }

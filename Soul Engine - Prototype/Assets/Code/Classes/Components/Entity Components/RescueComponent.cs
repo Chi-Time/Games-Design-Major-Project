@@ -8,27 +8,35 @@ namespace SoulEngine
 	{
 		public GameObject GameObject => _GameObject;
 
+		[Tooltip ("The score awarded upon collection"), SerializeField]
+		private int _Score = 0;
 		[Tooltip ("The length of time it takes to rescue the character."), SerializeField]
 		private float _RescueTime = 0.0f;
-		//TODO: Consider only using a single string rather than checking an array as you're doing a foreach for what is probably only 1 player tag needing to be checkd.
-		[Tooltip ("The tags this object should register with."), SerializeField]
-		private string[] _Tags = null;
 		
 		private float _Counter = 0.0f;
 		private bool _IsRescuing = false;
 		private GameObject _GameObject = null;
+		private TagComponent _TagComponent = null;
 
 		public IEnumerable<Type> RequiredComponents ()
 		{
 			return new Type[]
 			{
-				null,
+				typeof (TagComponent),
 			};
 		}
 
 		private void Awake ()
 		{
 			_GameObject = gameObject;
+			_TagComponent = GetComponent<TagComponent> ();
+			GetComponent<Collider2D> ().isTrigger = true;
+		}
+
+		private void OnEnable ()
+		{
+			_Counter = 0.0f;
+			_IsRescuing = false;
 		}
 
 		private void Update ()
@@ -54,12 +62,17 @@ namespace SoulEngine
 		private void Rescue ()
 		{
 			_GameObject.SetActive (false);
+		}
+
+		private void OnDisable ()
+		{
 			LevelSignals.OnEntityRescued?.Invoke (_GameObject);
+			LevelSignals.OnScoreIncreased?.Invoke (_Score);
 		}
 
 		private void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.gameObject.HasTags (_Tags))
+			if (other.HasTags (_TagComponent.Tags))
 			{
 				_IsRescuing = true;
 			}
@@ -67,7 +80,7 @@ namespace SoulEngine
 
 		private void OnTriggerExit2D (Collider2D other)
 		{
-			if (other.gameObject.HasTags (_Tags))
+			if (other.HasTags (_TagComponent.Tags))
 			{
 				_IsRescuing = false;
 			}

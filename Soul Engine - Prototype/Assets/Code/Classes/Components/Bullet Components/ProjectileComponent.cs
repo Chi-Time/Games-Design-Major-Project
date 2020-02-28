@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using TMPro;
 using UnityEngine;
 
 namespace SoulEngine
@@ -21,6 +19,7 @@ namespace SoulEngine
 
         protected override void EnteredCollider (Collider2D other)
         {
+            Cull ();
             LevelSignals.OnEntityHit?.Invoke (this, other.gameObject);
         }
 

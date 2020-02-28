@@ -14,7 +14,6 @@ namespace SoulEngine
 	public class ExplosionComponent : MonoBehaviour, IRequireComponents, IDamage
 	{
 		public int Damage { get; private set; }
-		public string[] Tags { get; private set; }
 		public GameObject GameObject => gameObject;
 
 		[Tooltip ("Should this object be destroyed when being culled?"), SerializeField]
@@ -27,20 +26,22 @@ namespace SoulEngine
 		private bool _CanDamage = false;
 		private float _StepLength = 0.0f;
 		private Transform _Transform = null;
+		private TagComponent _TagComponent = null;
 		private Vector2 _CachedScale = Vector2.zero;
 		private CircleCollider2D _Collider2D = null;
+
 
 		public IEnumerable<Type> RequiredComponents ()
 		{
 			return new Type[]
 			{
-				typeof (Collider2D),
+				typeof (TagComponent),
 			};
 		}
 
-		public void Construct (int damage, string[] tags)
+		public void Construct (int damage, EditorTags[] tags)
 		{
-			Tags = tags;
+			_TagComponent.Tags = tags;
 			Damage = damage;
 		}
 
@@ -49,6 +50,7 @@ namespace SoulEngine
 			_Transform = GetComponent<Transform> ();
 			_Collider2D = GetComponent<CircleCollider2D> ();
 			_CachedScale = _Transform.localScale;
+			_TagComponent = GetComponent<TagComponent> ();
 		}
 
 		private void OnEnable ()
@@ -112,7 +114,7 @@ namespace SoulEngine
 
 		private void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.gameObject.HasTags (Tags) && _CanDamage)
+			if (other.HasTags (_TagComponent.Tags) && _CanDamage)
 			{
 				//TODO: Figure out how to damage player when not using a bullet component to deal the damage.
 				LevelSignals.OnEntityHit?.Invoke (this, other.gameObject);

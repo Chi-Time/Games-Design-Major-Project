@@ -2,7 +2,7 @@
 
 namespace SoulEngine
 {
-	public class EMPProjectileComponent : ProjectileComponent
+	public class EMPProjectileComponent : BulletComponent
 	{
 		[Header ("Missile Specific Settings")]
 		[Space (2)]
@@ -40,8 +40,13 @@ namespace SoulEngine
 		
 		protected override void EnteredCollider (Collider2D other)
 		{
-			base.EnteredCollider (other);
+			Cull ();
 			LevelSignals.OnEntityEMP?.Invoke (other.gameObject);
+			LevelSignals.OnEntityHit?.Invoke (this, other.gameObject);
+		}
+
+		protected override void ExitedCollider (Collider2D other)
+		{
 		}
 	}
 }

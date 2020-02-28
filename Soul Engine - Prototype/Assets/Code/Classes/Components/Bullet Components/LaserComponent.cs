@@ -26,7 +26,6 @@ namespace SoulEngine
 
 		private void Update ()
 		{
-			print ("FIRING");
 			CastRay ();
 			_DamageRegulator.Tick ();
 		}
@@ -35,7 +34,7 @@ namespace SoulEngine
 		{
 			var hit = Physics2D.Raycast (_Transform.position, Vector2.up, _Range);
 			
-			if (hit.collider.gameObject.HasTags (_Tags))
+			if (hit.collider.HasTags (_TagComponent.Tags))
 			{
 				EnteredCollider (hit.collider);
 			}
