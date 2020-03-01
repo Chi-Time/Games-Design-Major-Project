@@ -9,6 +9,8 @@ namespace SoulEngine
 		
 		[Tooltip ("How long (in seconds) should this object take to complete their path?"), SerializeField]
 		private float _Speed;
+		[Tooltip ("Should the enemy face toward the path?"), SerializeField]
+		private bool _ShouldFacePath = false;
 		
 		private Transform _Transform;
 		private Rigidbody2D _Rigidbody2D;
@@ -43,7 +45,9 @@ namespace SoulEngine
 		private void OnValueUpdated(float value)
 		{
 			_Rigidbody2D.MovePosition (Path.GetPosition (value));
-			LookAhead (value);
+			
+			if (_ShouldFacePath)
+				LookAhead (value);
 		}
 
 		private void OnPathComplete ()

@@ -9,16 +9,31 @@ using UnityEngine.SceneManagement;
 
 public static class Extensions
 {
+    /// <summary>Determines if the given gameObject is the same as this one.</summary>
+    /// <param name="gameObject"></param>
+    /// <param name="other">The gameObject to compare against.</param>
+    /// <returns>True: If the gameObject is the same.</returns>
+    public static bool Is (this GameObject gameObject, GameObject other)
+    {
+        return Equals (gameObject, other);
+    }
+
+    /// <summary>Determines if the given component is the same as this one.</summary>
+    /// <param name="component"></param>
+    /// <param name="other">The component to compare against.</param>
+    /// <returns>True: If the component is the same.</returns>
+    public static bool Is (this Component component, Component other)
+    {
+        return Equals (component, other);
+    }
+    
     /// <summary>Determines if the component has the tag specified.</summary>
     /// <param name="component"></param>
     /// <param name="tagToLookFor">The tag to look for on the component.</param>
     /// <returns>True: If the component has the specified tag.</returns>
     public static bool HasTag (this Component component, string tagToLookFor)
     {
-        if (component.CompareTag (tagToLookFor))
-            return true; 
-        
-        return false;
+        return component.CompareTag (tagToLookFor);
     }
     
     /// <summary>Determines if the component has the tag specified.</summary>
@@ -34,8 +49,8 @@ public static class Extensions
             if (tagComponent.Tag == tagToLookFor)
                 return true; 
         }
-
-        return false;
+        
+        return component.HasTag (component.tag);
     }
 
     /// <summary>Determines if the component has the tag specified.</summary>
@@ -45,10 +60,7 @@ public static class Extensions
     /// <returns>True: If the component has the specified tag.</returns>
     public static bool HasTag (this Component component, EditorTags tag, EditorTags tagToLookFor)
     {
-        if (tag == tagToLookFor)
-            return true; 
-        
-        return false;
+        return tag == tagToLookFor;
     }
 
     /// <summary>Determines if the component has any of the tags provided.</summary>

@@ -23,10 +23,20 @@ namespace SoulEngine
         [Tooltip ("The various weapon types that this system can make use of.")] [SerializeField]
         private List<WeaponComponent> _Weapons = null;
 
+        private bool _HasEquippedWeapon = false;
+
+        private void Awake ()
+        {
+            if (_CurrentWeapon == null)
+                _HasEquippedWeapon = false;
+            else
+                _HasEquippedWeapon = true;
+        }
+
         /// <summary>Fires the currently equipped weapon (or weapons).</summary>
         public void Fire ()
         {
-            if (_UseSimultaneous == false)
+            if (_UseSimultaneous == false && _HasEquippedWeapon)
             {
                 _CurrentWeapon.Fire ();
             }
