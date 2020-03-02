@@ -8,8 +8,12 @@ namespace SoulEngine
     {
         public GameObject GameObject => gameObject;
         
-        [Tooltip ("The button to use for firing the weapon.")] [SerializeField]
-        private KeyCode _FireButton = KeyCode.Mouse0;
+        [Tooltip("Should the component use the keyboard for input?"), SerializeField]
+        private bool _UseKeyboard = true;
+        [Tooltip ("The button to use for firing the weapon on keyboard/mouse.")] [SerializeField]
+        private KeyCode _KeyboardKey = KeyCode.Mouse0;
+        [Tooltip ("The button to use for firing the weapon on controller/joystick.")] [SerializeField]
+        private KeyCode _ControllerKey = KeyCode.Joystick1Button5;
 
         private WeaponSystemComponent _WeaponSystem = null;
 
@@ -28,7 +32,7 @@ namespace SoulEngine
 
         private void Update ()
         {
-            if (Input.GetKey(_FireButton))
+            if (Input.GetKey(_KeyboardKey) | Input.GetKey (_ControllerKey))
             {
                 _WeaponSystem.Fire ();
             }
