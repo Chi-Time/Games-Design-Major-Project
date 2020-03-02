@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 557256375157578539}
   - component: {fileID: 557256375157578536}
-  - component: {fileID: 557256375157578537}
   - component: {fileID: 557256375157578538}
+  - component: {fileID: 557256375157578537}
   - component: {fileID: 6251886678017457453}
   m_Layer: 0
   m_Name: Magnet
@@ -50,20 +50,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 6
---- !u!114 &557256375157578537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557256375157578548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce9492d691f4548a3bfe775944deff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Speed: 0.5
-  _MagnetTag: Resource
 --- !u!50 &557256375157578538
 Rigidbody2D:
   serializedVersion: 4
@@ -85,6 +71,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &557256375157578537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557256375157578548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce9492d691f4548a3bfe775944deff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Speed: 0.5
+  _MagnetTag: Resource
 --- !u!114 &6251886678017457453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,14 +265,14 @@ GameObject:
   - component: {fileID: 557256377259494422}
   - component: {fileID: 557256377259494423}
   - component: {fileID: 557256377259494416}
-  - component: {fileID: 557256377259494417}
-  - component: {fileID: 557256377259494418}
-  - component: {fileID: 557256377259494419}
-  - component: {fileID: 557256377259494428}
-  - component: {fileID: 6251886677048287651}
-  - component: {fileID: 557256377259494429}
   - component: {fileID: 557256377259494430}
   - component: {fileID: 557256377259494431}
+  - component: {fileID: 557256377259494419}
+  - component: {fileID: 557256377259494418}
+  - component: {fileID: 6251886677048287651}
+  - component: {fileID: 557256377259494429}
+  - component: {fileID: 557256377259494417}
+  - component: {fileID: 557256377259494428}
   - component: {fileID: 1082260647146610478}
   m_Layer: 0
   m_Name: Player
@@ -344,90 +344,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &557256377259494417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557256377259494424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 294e5a304efb02d4b8a4d16a7d8797d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _KeyboardKey: 323
-  _ControllerKey: 355
---- !u!114 &557256377259494418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557256377259494424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6162c7b82652548ac2a3abece89cbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Health: 100
-  _ShouldDestroy: 0
---- !u!114 &557256377259494419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557256377259494424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6935c68fbdacf046a3a1156ddd73848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &557256377259494428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557256377259494424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1b0f9f55476f3438ab697b1e6edd8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Speed: 5
---- !u!114 &6251886677048287651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557256377259494424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Tags: 
---- !u!114 &557256377259494429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557256377259494424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720dafa097f8448478d39c3a19064933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UseSimultaneous: 1
-  _CurrentWeapon: {fileID: 5343275577820828023}
-  _Weapons:
-  - {fileID: 5343275577820828023}
-  - {fileID: 1447203351565590665}
-  - {fileID: 1447203351510516141}
 --- !u!50 &557256377259494430
 Rigidbody2D:
   serializedVersion: 4
@@ -475,6 +391,93 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &557256377259494419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557256377259494424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6935c68fbdacf046a3a1156ddd73848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &557256377259494418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557256377259494424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6162c7b82652548ac2a3abece89cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Health: 100
+  _ShouldDestroy: 0
+--- !u!114 &6251886677048287651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557256377259494424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Tags: 
+--- !u!114 &557256377259494429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557256377259494424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720dafa097f8448478d39c3a19064933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _UseSimultaneous: 1
+  _CurrentWeapon: {fileID: 5343275577820828023}
+  _Weapons:
+  - {fileID: 5343275577820828023}
+  - {fileID: 1447203351565590665}
+  - {fileID: 1447203351510516141}
+--- !u!114 &557256377259494417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557256377259494424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294e5a304efb02d4b8a4d16a7d8797d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _UseKeyboard: 1
+  _KeyboardKey: 323
+  _ControllerKey: 355
+--- !u!114 &557256377259494428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557256377259494424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1b0f9f55476f3438ab697b1e6edd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Speed: 10
+  _HorizontalAxis: Horizontal
+  _VerticalAxis: Vertical
 --- !u!114 &1082260647146610478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab81a3398064fa1bda853ff3d28d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _UseKeyboard: 1
   _KeyboardSetup: 304
   _ControllerSetup: 354
 --- !u!1001 &644426911438011868

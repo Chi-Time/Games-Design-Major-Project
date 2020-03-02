@@ -14,7 +14,8 @@ namespace SoulEngine
 		private string _HorizontalAxis = "Horizontal";
 		[Tooltip ("The axis name to use for vertical input."), SerializeField]
 		private string _VerticalAxis = "Vertical";
-
+		
+		private bool _SwapAxes = false;
 		/// <summary>Reference to the object's Rigidbody component.</summary>
 		private Rigidbody2D _Rigidbody2D = null;
 
@@ -59,7 +60,26 @@ namespace SoulEngine
 
 		private Vector2 GetInput ()
 		{
+			// https://forum.unity.com/threads/character-moving-too-fast-in-diagonal-movement.476179/
+			if (_SwapAxes)
+				return new Vector2 (-Input.GetAxisRaw (_VerticalAxis), Input.GetAxisRaw (_HorizontalAxis));
+			
 			return new Vector2 (Input.GetAxisRaw (_HorizontalAxis), Input.GetAxisRaw (_VerticalAxis));
+		}
+		
+		private void OnEnable ()
+		{
+			LevelSignals.OnPerspectiveSwitched += OnPerspectiveSwitched;
+		}
+
+		private void OnPerspectiveSwitched ()
+		{
+			_SwapAxes = !_SwapAxes;
+		}
+
+		private void OnDisable ()
+		{
+			LevelSignals.OnPerspectiveSwitched -= OnPerspectiveSwitched;
 		}
 	}
 }
