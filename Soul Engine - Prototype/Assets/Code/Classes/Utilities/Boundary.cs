@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SoulEngine
+namespace Utilities
 {
 	[Serializable]
 	public struct Boundary

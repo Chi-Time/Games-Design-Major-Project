@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace SoulEngine
+namespace Utilities
 {
 	[Serializable]
 	public class Regulator

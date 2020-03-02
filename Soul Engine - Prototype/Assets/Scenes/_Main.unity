@@ -3880,6 +3880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff3dbf224c34c49871f1c9fdec2b953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _WeaponSystem: {fileID: 0}
 --- !u!114 &683320142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11161,7 +11162,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _FollowerPrefab
       value: 
-      objectReference: {fileID: -6479988862266859580, guid: 6baa04b46936dd54992229ada2b66d4c,
+      objectReference: {fileID: -6479988862266859580, guid: d297fd9d3b3eb2e45907a43967dded2a,
         type: 3}
     - target: {fileID: 1754823945326937525, guid: b628b970c005e6448b9c3f7a91ebddb4,
         type: 3}
@@ -11385,11 +11386,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827624559}
     m_Modifications:
-    - target: {fileID: 557256377259494416, guid: 175f4dc7c956e144080d07845ce3e300,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 626c10502d0926547b1c1d2ad9f80309, type: 2}
     - target: {fileID: 557256377259494422, guid: 175f4dc7c956e144080d07845ce3e300,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11449,6 +11445,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 557256377259494428, guid: 175f4dc7c956e144080d07845ce3e300,
+        type: 3}
+      propertyPath: _Speed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082260647146610478, guid: 175f4dc7c956e144080d07845ce3e300,
+        type: 3}
+      propertyPath: _UseKeyboard
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 175f4dc7c956e144080d07845ce3e300, type: 3}

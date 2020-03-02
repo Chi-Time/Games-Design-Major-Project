@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace SoulEngine
+namespace Utilities
 {
     [Serializable]
     public class ObjectPool<T> where T : Component

@@ -1,6 +1,4 @@
-﻿using Code.Enums;
-
-namespace Code.Classes
+﻿namespace SoulEngine
 {
 	public static class Globals
 	{

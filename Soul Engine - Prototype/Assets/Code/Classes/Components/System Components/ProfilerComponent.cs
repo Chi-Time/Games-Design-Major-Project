@@ -8,10 +8,49 @@ namespace SoulEngine
 	{
 		[SerializeField]
 		private int _Count = 5;
-		
+		[SerializeField]
+		private int _AverageCount = 0;
+		[SerializeField]
+		private GameObject _Other = null;
+
 		private void Awake ()
 		{
-			StringAndEnumComparison ();
+			//Comparison ();
+			//StringAndEnumComparison ();
+			//Debug.Break ();
+		}
+
+		private void Comparison ()
+		{
+			var stopwatch = new Stopwatch ();
+			long opComparison = 0;
+			long idComparison = 0;
+
+			stopwatch.Start ();
+			
+			for (int i = 0; i < _Count; i++)
+			{
+				if (_Other == gameObject)
+					continue;
+			}
+
+			stopwatch.Stop ();
+			opComparison = stopwatch.ElapsedTicks;
+
+			stopwatch.Reset ();
+
+			stopwatch.Start ();
+			
+			for (int i = 0; i < _Count; i++)
+			{
+				if (Equals (gameObject, _Other))
+					continue;
+			}
+			
+			stopwatch.Stop ();
+			idComparison = stopwatch.ElapsedTicks;
+
+			print ("OPERATOR: " + opComparison + " : " + "ID: " + idComparison);
 		}
 
 		private void StringAndEnumComparison ()

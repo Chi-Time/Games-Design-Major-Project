@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Schema;
 using UnityEngine;
+using Utilities;
 
 namespace SoulEngine
 {

@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IRequireComponents
+namespace SoulEngine
 {
-    GameObject GameObject { get; }
-
-    IEnumerable<Type> RequiredComponents ();
+	public interface IRequireComponents
+    {
+        GameObject GameObject { get; }
+    
+        IEnumerable<Type> RequiredComponents ();
+    }
 }
