@@ -79,9 +79,9 @@ namespace SoulEngine
 		protected override void CalculateTimers ()
 		{
 			if (_IsFiring)
-				_LengthCounter += Time.deltaTime;
+				_LengthCounter += Time.unscaledDeltaTime;
 			else 
-				_ShotDelayCounter += Time.deltaTime;
+				_ShotDelayCounter += Time.unscaledDeltaTime;
 		}
 	}
 }

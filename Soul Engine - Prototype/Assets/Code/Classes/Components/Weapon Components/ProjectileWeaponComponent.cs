@@ -29,7 +29,7 @@ namespace SoulEngine
 
 		protected override void CalculateTimers ()
 		{
-			_Counter += Time.deltaTime;
+			_Counter += Time.unscaledDeltaTime;
 		}
 	}
 }
