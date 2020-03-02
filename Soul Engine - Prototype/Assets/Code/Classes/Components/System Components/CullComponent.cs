@@ -2,15 +2,9 @@
 
 namespace SoulEngine
 {
-	[RequireComponent (typeof (Collider2D))]
-	public class CullComponent : MonoBehaviour
+	public class CullComponent : TriggerComponent
 	{
-		private void Awake ()
-		{
-			GetComponent<Collider2D> ().isTrigger = true;
-		}
-
-		private void OnTriggerEnter2D (Collider2D other)
+		protected override void Triggered (Collider2D other)
 		{
 			other.gameObject.SetActive (false);
 		}

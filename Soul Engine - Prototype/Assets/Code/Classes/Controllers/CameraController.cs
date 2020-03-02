@@ -21,12 +21,6 @@ namespace SoulEngine
 			_CurrentFOV = _Camera.fieldOfView;
 		}
 
-		private void Update ()
-		{
-			if (Input.GetKeyDown (KeyCode.Q))
-				LevelSignals.OnPerspectiveSwitched?.Invoke ();
-		}
-
 		private void OnEnable ()
 		{
 			LevelSignals.OnPerspectiveSwitched += OnPerspectiveSwitched;
