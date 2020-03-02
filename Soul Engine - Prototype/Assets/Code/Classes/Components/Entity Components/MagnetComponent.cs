@@ -11,8 +11,6 @@ namespace SoulEngine
 
 		[Tooltip ("How fast does the magnetised object move toward the player."), SerializeField]
 		private float _Speed = 0.0f;
-		[Tooltip ("The tag to look for when becoming magnetised by the player."), SerializeField]
-		private string _MagnetTag = "Magnet";
 
 		private Transform _Transform = null;
 		private Rigidbody2D _Rigidbody2D = null;
