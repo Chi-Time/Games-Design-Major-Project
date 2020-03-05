@@ -31,6 +31,11 @@ namespace SoulEngine
 			InvokeRepeating (nameof(SpawnFollower), _SpawnDelay, _SpawnDelay);
 		}
 
+		private void OnDisable ()
+		{
+			CancelInvoke ();
+		}
+
 		private void SpawnFollower ()
 		{
 			var follower = _FollowerPool.Get ();

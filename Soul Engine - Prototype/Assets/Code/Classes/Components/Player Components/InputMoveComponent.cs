@@ -16,6 +16,7 @@ namespace SoulEngine
 		private string _VerticalAxis = "Vertical";
 		
 		private bool _SwapAxes = false;
+		private Transform _Transform = null;
 		/// <summary>Reference to the object's Rigidbody component.</summary>
 		private Rigidbody2D _Rigidbody2D = null;
 
@@ -30,6 +31,7 @@ namespace SoulEngine
 		private void Awake ()
 		{
 			SetupRigidbody ();
+			_Transform = GetComponent<Transform> ();
 		}
 
 		private void SetupRigidbody ()
@@ -40,9 +42,10 @@ namespace SoulEngine
 			_Rigidbody2D.gravityScale = 0.0f;
 		}
 
-		private void Update ()
+		private void FixedUpdate ()
 		{
-			_Rigidbody2D.MovePosition (_Rigidbody2D.position + CalculateInputVelocity ());
+			_Transform.Translate (CalculateInputVelocity ());
+			//_Rigidbody2D.MovePosition ((Vector2)_Transform.localPosition + CalculateInputVelocity ());
 		}
 
 		private Vector2 CalculateInputVelocity ()

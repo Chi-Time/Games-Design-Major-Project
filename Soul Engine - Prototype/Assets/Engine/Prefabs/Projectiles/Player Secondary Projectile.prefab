@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Damage: 2
-  _Speed: 30
+  _Speed: 40
   _Lifetime: 2
   _ShouldDestroy: 0
 --- !u!114 &2182141302273834701
