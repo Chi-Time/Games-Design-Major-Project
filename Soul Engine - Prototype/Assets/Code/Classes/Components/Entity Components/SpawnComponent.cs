@@ -4,11 +4,17 @@ namespace SoulEngine
 {
 	public class SpawnComponent : MonoBehaviour
 	{
+		[Tooltip ("The offset from the player that this path will spawn at."), SerializeField]
+		private float _SpawnOffset = 5.0f;
+
 		private Camera _Camera = null;
+		private Transform _Mover = null;
+		private Transform _Transform = null;
 		private MonoBehaviour[] _Components = null;
 		
-		private void Start ()
+		private void Awake ()
 		{
+			_Transform = GetComponent<Transform> ();
 			_Components = GetComponents<MonoBehaviour> ();
 			_Camera = FindObjectOfType<Camera> ();
 			ActivateComponents (false);
@@ -26,13 +32,19 @@ namespace SoulEngine
 			}
 		}
 
+		private void Start ()
+		{
+			_Mover = FindObjectOfType<MoverComponent> ().transform;
+		}
+
 		private void Update ()
 		{
-			print (_Camera.transform.position.y + 20f + " | " + transform.position.y);
-			
-			if (_Camera.transform.position.y + 15f >= transform.position.y)
-				ActivateComponents (true);
-			// print (_Camera.ViewportToWorldPoint (new Vector3 (_Camera.pixelWidth / 2f, _Camera.pixelHeight, 20.0f)));
+			if (_Camera.transform.position.y + _SpawnOffset >= transform.position.y)
+			{
+				_Transform.SetParent (_Mover);
+                ActivateComponents(true);
+                this.enabled = false;
+            }
 		}
 	}
 }

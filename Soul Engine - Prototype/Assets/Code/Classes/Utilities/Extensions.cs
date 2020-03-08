@@ -11,6 +11,22 @@ namespace UnityEngine
 {
 	public static class Extensions
 	{
+		/// <summary>Returns true if the current object is null.</summary>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public static bool IsNull (this UnityEngine.Object obj)
+		{
+			return (object) obj == null;
+		}
+		
+		/// <summary>Returns true if the current object is NOT null.</summary>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public static bool IsNotNull (this UnityEngine.Object obj)
+		{
+			return (object) obj != null;
+		}
+		
 		/// <summary>Determines if the given gameObject is the same as this one.</summary>
 		/// <param name="gameObject"></param>
 		/// <param name="other">The gameObject to compare against.</param>
@@ -44,6 +60,7 @@ namespace UnityEngine
 		/// <returns>True: If the component has the specified tag.</returns>
 		public static bool HasTag (this Component component, EditorTags tagToLookFor)
 		{
+			//var tagComponent = (ITaggable)component.GetComponent (typeof (ITaggable));
 			var tagComponent = component.GetComponent<TagComponent> ();
 
 			if (tagComponent != null)
@@ -88,6 +105,8 @@ namespace UnityEngine
 		/// <returns>True: If the object has one or more of the given tags.</returns>
 		public static bool HasTags (this Component component, EditorTags[] tagsToLookFor)
 		{
+			//TODO: Profile how well this casting performs to a normal getcomponent (TagComponent).
+			//var taggedBehaviour = (ITaggable)component.GetComponent (typeof (ITaggable));
 			var taggedBehaviour = component.GetComponent<TagComponent> ();
 
 			if (taggedBehaviour != null && tagsToLookFor != null)

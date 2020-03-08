@@ -53,7 +53,8 @@ namespace SoulEngine
 			float maxMagnitude = 1.0f;
 			
 			var inputVelocity = GetInput ();
-			
+		
+			// https://forum.unity.com/threads/character-moving-too-fast-in-diagonal-movement.476179/
 			//Normalise input if we exceed magnitude to stop diagonal speedup.
 			if (inputVelocity.magnitude >= maxMagnitude)
 				inputVelocity.Normalize ();
@@ -63,7 +64,6 @@ namespace SoulEngine
 
 		private Vector2 GetInput ()
 		{
-			// https://forum.unity.com/threads/character-moving-too-fast-in-diagonal-movement.476179/
 			if (_SwapAxes)
 				return new Vector2 (-Input.GetAxisRaw (_VerticalAxis), Input.GetAxisRaw (_HorizontalAxis));
 			

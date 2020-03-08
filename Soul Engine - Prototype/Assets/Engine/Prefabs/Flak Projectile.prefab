@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 1359761970551953268}
   - component: {fileID: 1359761970551953269}
   - component: {fileID: 1359761970551953224}
+  - component: {fileID: 2253938518926227273}
   m_Layer: 0
   m_Name: Flak
   m_TagString: Untagged
@@ -84,8 +85,6 @@ MonoBehaviour:
   _Speed: 13
   _Lifetime: 15
   _ShouldDestroy: 0
-  _Tags:
-  - Player
   _IsPlayerProjectile: 0
   _ExplosionDistance: 1
   _Marker: {fileID: 1359761970840372918}
@@ -174,6 +173,19 @@ CircleCollider2D:
   m_Offset: {x: -0.00032632053, y: 0.10985388}
   serializedVersion: 2
   m_Radius: 0.10985388
+--- !u!114 &2253938518926227273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359761970551953266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Tags: 05000000
 --- !u!1 &1359761970786077997
 GameObject:
   m_ObjectHideFlags: 0

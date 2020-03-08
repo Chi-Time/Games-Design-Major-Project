@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace SoulEngine
 {
-	//TODO: Add pathfinding for bullet so that it rotates around and voids targets in it's way when it initially fires.
+	//TODO: Add pathfinding for bullet so that it rotates around and avoids targets in it's way when it initially fires.
 	//TODO: Find a better way to handle the logic. Currently turning off the renderer and tracking the parent is stupid and messy, RECONSIDER THIS WITH FREETIME.
 	//TODO: Consider making bullet movement logic it's own component so that each bullet type simply adds the component with the relevant logic it needs.
 	//TODO: Consider removing BulletComponent base class entirely and design new system with interfaces and simplified abstract class.
@@ -69,8 +69,6 @@ namespace SoulEngine
 
 		private void SetupExplosion (ref Vector3 position)
 		{
-			//TODO: Find a way around doing this, constructing the explosion is needless and prone to bugs.
-			_Explosion.Construct (_Damage, _TagComponent.Tags);
 			_Explosion.transform.position = position;
 		}
 		
@@ -122,8 +120,10 @@ namespace SoulEngine
 			_Renderer.enabled = false;
 			_Collider2D.enabled = false;
 			_Marker.gameObject.SetActive (false);
-
 			_Explosion.gameObject.SetActive (true);
+			//BUG: Needing to construct the explosion upon activation is bad and leads to an error if not specifically HERE.
+			//TODO: Find a way around doing this, constructing the explosion is needless and prone to bugs.
+			_Explosion.Construct (_Damage, _TagComponent.Tags);
 		}
 
 		protected override void EnteredCollider (Collider2D other)

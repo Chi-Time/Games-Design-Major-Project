@@ -12,10 +12,13 @@ namespace SoulEngine
 		private int _Score = 0;
 		[Tooltip ("The value of this resource upon being collected."), SerializeField]
 		private int _Value = 0;
-		[Tooltip ("The tag to look for when colliding with the player."), SerializeField]
-		private string _PlayerTag = "Player";
+		[Tooltip ("The distance away from the player before being collected."), SerializeField]
+		private float _Distance = 0.25f;
+		[Tooltip ("The various tags this component should look for."), SerializeField]
+		private TagController _TagController = new TagController ();
 
-		private TagComponent _TagComponent = null;
+		private Transform _Transform = null;
+		private Transform _Target = null;
 
 		public IEnumerable<Type> RequiredComponents ()
 		{
@@ -27,8 +30,14 @@ namespace SoulEngine
 
 		private void Awake ()
 		{
+			_TagController.Construct (this);
+			_Transform = GetComponent<Transform> ();
 			GetComponent<Collider2D> ().isTrigger = true;
-			_TagComponent = GetComponent<TagComponent> ();
+		}
+
+		private void Start ()
+		{
+			_Target = FindObjectOfType<PlayerController> ()?.transform;
 		}
 
 		private void Collect ()
@@ -38,9 +47,20 @@ namespace SoulEngine
 			LevelSignals.OnResourceCollected?.Invoke (_Value);
 		}
 
+		private void Update ()
+		{
+			//TODO: Find a way to use a boolean for the null check instead as Unity's own overload is terrible.
+			if (_Target == null)
+				return;
+
+			//Find a way to use colliders instead of distance calculations as it's unnecessary overhead.
+			if (Vector3.Distance (_Transform.position, _Target.position) <= _Distance)
+				Collect ();
+		}
+
 		private void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.HasTags (_TagComponent.Tags))
+			if (other.HasTags (_TagController.Tags))
 			{
 				Collect ();
 			}

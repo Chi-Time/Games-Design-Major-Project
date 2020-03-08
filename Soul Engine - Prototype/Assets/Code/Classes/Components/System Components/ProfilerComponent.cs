@@ -13,11 +13,50 @@ namespace SoulEngine
 		[SerializeField]
 		private GameObject _Other = null;
 
+		private Transform _NotNullObject = null;
+		private Transform _NullObject = null;
+
 		private void Awake ()
 		{
+			NullComparisons ();
 			//Comparison ();
 			//StringAndEnumComparison ();
-			//Debug.Break ();
+			Debug.Break ();
+		}
+
+		private void NullComparisons ()
+		{
+			var stopwatch = new Stopwatch ();
+			long opComparison = 0;
+			long idComparison = 0;
+			
+			stopwatch.Start ();
+			
+			for (int i = 0; i < _Count; i++)
+			{
+				if (_NullObject == null)
+					continue;
+			}
+
+			stopwatch.Stop ();
+			opComparison = stopwatch.ElapsedTicks;
+
+			stopwatch.Reset ();
+
+			stopwatch.Start ();
+			
+			for (int i = 0; i < _Count; i++)
+			{
+				if (_NullObject is null)
+				{
+					continue;
+				}
+			}
+			
+			stopwatch.Stop ();
+			idComparison = stopwatch.ElapsedTicks;
+
+			print ("Unity Null: " + opComparison + " : " + "Object Null: " + idComparison);
 		}
 
 		private void Comparison ()

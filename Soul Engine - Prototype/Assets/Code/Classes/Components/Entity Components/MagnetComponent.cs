@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace SoulEngine
 {
+	[RequireComponent (typeof (Rigidbody2D), typeof (Collider2D), typeof (TagComponent))]
 	public class MagnetComponent : MonoBehaviour, IRequireComponents
 	{
 		public GameObject GameObject => gameObject;
@@ -31,49 +32,10 @@ namespace SoulEngine
 			_Rigidbody2D.isKinematic = true;
 			_Rigidbody2D.gravityScale = 0.0f;
 			_Rigidbody2D.freezeRotation = true;
-			
+
 			_Transform = GetComponent<Transform> ();
 			GetComponent<Collider2D> ().isTrigger = true;
 			_TagComponent = GetComponent<TagComponent> ();
-		}
-
-		//TODO: Consider moving the resource pieces in their own component.
-		private void OnTriggerStay2D (Collider2D other)
-		{
-			// Grab the other transform.
-			var target = other.transform;
-
-			// Make sure we're not already tweening the other transform.
-			if (other.HasTags (_TagComponent.Tags) && IsActive (target.GetInstanceID ()) == false)
-			{
-				Tween.Position (target,
-				                _Transform.position,
-				                _Speed,
-				                0,
-				                Tween.EaseIn,
-				                Tween.LoopType.None,
-				                null);
-			}
-		}
-
-		private bool IsActive (int instanceID)
-		{
-			// Check the active tweens list to determine if we're already active.
-			foreach (var tween in Tween.activeTweens)
-			{
-				if (tween.targetInstanceID == instanceID)
-					return true;
-			}
-
-			return false;
-		}
-
-		private void OnTriggerExit2D (Collider2D other)
-		{
-			if (other.HasTags (_TagComponent.Tags))
-			{
-				Tween.Stop (other.transform.GetInstanceID ());
-			}
 		}
 	}
 }

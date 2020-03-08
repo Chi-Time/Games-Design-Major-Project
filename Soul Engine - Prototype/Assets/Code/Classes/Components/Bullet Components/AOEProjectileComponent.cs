@@ -35,7 +35,6 @@ namespace SoulEngine
 			var position = SelectTargetPosition ();
 			SetupBullet ();
 			SetupMarker (ref position);
-			SetupExplosion (ref position);
 
 			Invoke (nameof(Explode), _Lifetime);
 		}
@@ -56,12 +55,6 @@ namespace SoulEngine
 		{
 			_Marker.gameObject.SetActive (true);
 			_Marker.position = position;
-		}
-
-		private void SetupExplosion (ref Vector3 position)
-		{
-			_Explosion.Construct (_Damage, _TagComponent.Tags);
-			_Explosion.transform.position = position;
 		}
 
 		protected override void OnDisable ()
@@ -91,8 +84,15 @@ namespace SoulEngine
 		{
 			_WasFired = true;
 			_Collider2D.enabled = false;
-			_Explosion.gameObject.SetActive (true);
+			SetupExplosion (_Marker.position);
 			_Marker.gameObject.SetActive (false);
+		}
+		
+		private void SetupExplosion (Vector3 position)
+		{
+			_Explosion.Construct (_Damage, _TagComponent.Tags);
+			_Explosion.transform.position = position;
+			_Explosion.gameObject.SetActive (true);
 		}
 
 		protected override void EnteredCollider (Collider2D other)

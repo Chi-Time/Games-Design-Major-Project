@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 3920471790150731002}
   - component: {fileID: 3920471790150731003}
   - component: {fileID: 3920471790150731000}
+  - component: {fileID: 8914692275039287364}
   m_Layer: 0
   m_Name: AOE
   m_TagString: Untagged
@@ -277,12 +278,7 @@ MonoBehaviour:
   _Speed: 0
   _Lifetime: 2
   _ShouldDestroy: 0
-  _Tags:
-  - Player
   _Distance: 1.25
-  _ExplosionDistances:
-    Min: -5
-    Max: 10
   _Marker: {fileID: 3920471789541370382}
   _Explosion: {fileID: 3920471789164538647}
 --- !u!50 &3920471790150731003
@@ -322,3 +318,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8914692275039287364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920471790150731004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Tags: 05000000

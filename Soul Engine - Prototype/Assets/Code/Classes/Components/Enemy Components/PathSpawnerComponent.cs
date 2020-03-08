@@ -22,7 +22,7 @@ namespace SoulEngine
 		private void Awake ()
 		{
 			_Path = GetComponent<Spline> ();
-			_FollowerPool.Construct (this, _FollowerPrefab, transform, _SpawnCount, _Name);
+			_FollowerPool.Construct (this, _FollowerPrefab, _SpawnCount, _Name);
 		}
 
 		private void OnEnable ()

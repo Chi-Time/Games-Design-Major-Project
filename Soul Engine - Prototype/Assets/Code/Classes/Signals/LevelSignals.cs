@@ -5,6 +5,7 @@ namespace SoulEngine
 {
 	public static class LevelSignals
 	{
+		public static Action<bool, GameObject> OnEntityMagnetised;
 		public static Action OnGamePaused;
 		public static Action OnLevelFailed;
 		public static Action OnLevelComplete;

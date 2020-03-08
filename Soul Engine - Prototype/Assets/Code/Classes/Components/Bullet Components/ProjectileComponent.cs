@@ -27,9 +27,10 @@ namespace SoulEngine
         {
         }
 
-        private void Update ()
+        private void FixedUpdate ()
         {
-            _Rigidbody2D.MovePosition (_Rigidbody2D.position + (Vector2)_Transform.up * (_Speed * Time.deltaTime));
+            Vector2 velocity = _Transform.up * ( _Speed * Time.deltaTime );
+            _Rigidbody2D.MovePosition (_Rigidbody2D.position + velocity);
         }
     }
 }
