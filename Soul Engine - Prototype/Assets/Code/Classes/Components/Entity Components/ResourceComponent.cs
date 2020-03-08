@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SoulEngine
 {
+	[RequireComponent (typeof (TagComponent), typeof (Collider2D))]
 	public class ResourceComponent : MonoBehaviour, IRequireComponents
 	{
 		public GameObject GameObject => gameObject;
@@ -17,8 +18,8 @@ namespace SoulEngine
 		[Tooltip ("The various tags this component should look for."), SerializeField]
 		private TagController _TagController = new TagController ();
 
-		private Transform _Transform = null;
 		private Transform _Target = null;
+		private Transform _Transform = null;
 
 		public IEnumerable<Type> RequiredComponents ()
 		{
@@ -45,17 +46,6 @@ namespace SoulEngine
 			this.gameObject.SetActive (false);
 			LevelSignals.OnScoreIncreased?.Invoke (_Score);
 			LevelSignals.OnResourceCollected?.Invoke (_Value);
-		}
-
-		private void Update ()
-		{
-			//TODO: Find a way to use a boolean for the null check instead as Unity's own overload is terrible.
-			if (_Target == null)
-				return;
-
-			//Find a way to use colliders instead of distance calculations as it's unnecessary overhead.
-			if (Vector3.Distance (_Transform.position, _Target.position) <= _Distance)
-				Collect ();
 		}
 
 		private void OnTriggerEnter2D (Collider2D other)

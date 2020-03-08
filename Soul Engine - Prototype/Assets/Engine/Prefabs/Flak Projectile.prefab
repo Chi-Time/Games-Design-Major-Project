@@ -85,6 +85,8 @@ MonoBehaviour:
   _Speed: 13
   _Lifetime: 15
   _ShouldDestroy: 0
+  _TagController:
+    _Tags: 05000000
   _IsPlayerProjectile: 0
   _ExplosionDistance: 1
   _Marker: {fileID: 1359761970840372918}
@@ -185,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Tags: 05000000
 --- !u!1 &1359761970786077997
 GameObject:
   m_ObjectHideFlags: 0

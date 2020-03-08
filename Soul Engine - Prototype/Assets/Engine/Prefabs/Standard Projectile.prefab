@@ -98,8 +98,8 @@ MonoBehaviour:
   _Speed: 25
   _Lifetime: 2
   _ShouldDestroy: 0
-  _Tags:
-  - Player
+  _TagController:
+    _Tags: 05000000
 --- !u!50 &1165682609911216065
 Rigidbody2D:
   serializedVersion: 4

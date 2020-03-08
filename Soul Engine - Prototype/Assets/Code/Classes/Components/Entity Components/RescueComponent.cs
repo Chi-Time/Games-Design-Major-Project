@@ -1,13 +1,14 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace SoulEngine
 {
 	[RequireComponent (typeof (TagComponent))]
 	public class RescueComponent : MonoBehaviour, IRequireComponents
 	{
-		public GameObject GameObject => _GameObject;
+		public GameObject GameObject => gameObject;
 
 		[Tooltip ("The score awarded upon collection"), SerializeField]
 		private int _Score = 0;

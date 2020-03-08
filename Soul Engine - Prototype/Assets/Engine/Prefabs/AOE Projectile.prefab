@@ -278,6 +278,8 @@ MonoBehaviour:
   _Speed: 0
   _Lifetime: 2
   _ShouldDestroy: 0
+  _TagController:
+    _Tags: 05000000
   _Distance: 1.25
   _Marker: {fileID: 3920471789541370382}
   _Explosion: {fileID: 3920471789164538647}
@@ -330,4 +332,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Tags: 05000000

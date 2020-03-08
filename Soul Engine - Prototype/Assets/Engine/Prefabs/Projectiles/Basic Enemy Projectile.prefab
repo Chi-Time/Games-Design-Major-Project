@@ -136,6 +136,8 @@ MonoBehaviour:
   _Speed: 12
   _Lifetime: 5
   _ShouldDestroy: 0
+  _TagController:
+    _Tags: 05000000
 --- !u!114 &5473513379085613905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,4 +150,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Tags: 05000000

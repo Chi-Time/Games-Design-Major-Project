@@ -18,12 +18,13 @@ namespace SoulEngine
 		protected float _Speed = 0.0f;
 		[Tooltip ("How long the projectile lives for before being culled."), SerializeField]
 		protected float _Lifetime = 0.0f;
-		[Tooltip ("The various tags this projectile can collide with."), SerializeField]
+		[Tooltip ("Should the object be destroyed or de-activated upon death."), SerializeField]
 		protected bool _ShouldDestroy = false;
+		[SerializeField]
+		protected TagController _TagController = new TagController ();
 
 		protected Transform _Transform = null;
 		protected Rigidbody2D _Rigidbody2D = null;
-		protected TagController _TagController = new TagController ();
 
 		public IEnumerable<Type> RequiredComponents ()
 		{

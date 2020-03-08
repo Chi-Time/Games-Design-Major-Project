@@ -49,7 +49,8 @@ MonoBehaviour:
   _Speed: 0
   _Lifetime: 1
   _ShouldDestroy: 0
-  _Tags: []
+  _TagController:
+    _Tags: 05000000
   _Range: 10
   _DamageRegulator:
     _Interval: 0

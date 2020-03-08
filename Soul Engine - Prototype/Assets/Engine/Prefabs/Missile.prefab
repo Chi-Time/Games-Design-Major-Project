@@ -135,8 +135,8 @@ MonoBehaviour:
   _Speed: 5
   _Lifetime: 10
   _ShouldDestroy: 0
-  _Tags:
-  - Player
+  _TagController:
+    _Tags: 05000000
   _LockOnLength: 2
   _TargetingDelay: 1
   _IsPlayerProjectile: 0

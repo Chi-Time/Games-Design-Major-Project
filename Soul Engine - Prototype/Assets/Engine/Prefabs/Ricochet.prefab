@@ -98,8 +98,8 @@ MonoBehaviour:
   _Speed: 15
   _Lifetime: 15
   _ShouldDestroy: 0
-  _Tags:
-  - Player
+  _TagController:
+    _Tags: 05000000
   _Angle: 4
   _XBounds:
     Min: -10
