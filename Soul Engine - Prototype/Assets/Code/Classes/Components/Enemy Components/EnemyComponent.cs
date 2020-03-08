@@ -42,7 +42,6 @@ namespace SoulEngine
 
 		protected virtual void OnEntityHit (IDamage damage, GameObject other)
 		{
-			print ("HIT");
 			if (Equals (other, gameObject))
 			{
 				_Health.TakeDamage (damage.Damage);

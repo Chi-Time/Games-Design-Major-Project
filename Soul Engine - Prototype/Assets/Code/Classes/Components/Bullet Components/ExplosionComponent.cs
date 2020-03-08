@@ -29,7 +29,7 @@ namespace SoulEngine
 		private TagComponent _TagComponent = null;
 		private Vector2 _CachedScale = Vector2.zero;
 		private CircleCollider2D _Collider2D = null;
-
+		private TagController _TagController = new TagController ();
 
 		public IEnumerable<Type> RequiredComponents ()
 		{
@@ -41,8 +41,8 @@ namespace SoulEngine
 
 		public void Construct (int damage, EditorTags[] tags)
 		{
-			_TagComponent.Tags = tags;
 			Damage = damage;
+			_TagController.Tags = tags;
 		}
 
 		private void Awake ()
@@ -114,7 +114,7 @@ namespace SoulEngine
 
 		private void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.HasTags (_TagComponent.Tags) && _CanDamage)
+			if (other.HasTags (_TagController.Tags) && _CanDamage)
 			{
 				//TODO: Figure out how to damage player when not using a bullet component to deal the damage.
 				LevelSignals.OnEntityHit?.Invoke (this, other.gameObject);

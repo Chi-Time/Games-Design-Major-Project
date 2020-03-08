@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace SoulEngine
 {
+	[RequireComponent (typeof (TagComponent))]
 	public class RescueComponent : MonoBehaviour, IRequireComponents
 	{
 		public GameObject GameObject => _GameObject;
@@ -16,7 +17,7 @@ namespace SoulEngine
 		private float _Counter = 0.0f;
 		private bool _IsRescuing = false;
 		private GameObject _GameObject = null;
-		private TagComponent _TagComponent = null;
+		private TagController _TagController = new TagController ();
 
 		public IEnumerable<Type> RequiredComponents ()
 		{
@@ -29,7 +30,7 @@ namespace SoulEngine
 		private void Awake ()
 		{
 			_GameObject = gameObject;
-			_TagComponent = GetComponent<TagComponent> ();
+			_TagController.Construct (this);
 			GetComponent<Collider2D> ().isTrigger = true;
 		}
 
@@ -72,7 +73,7 @@ namespace SoulEngine
 
 		private void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.HasTags (_TagComponent.Tags))
+			if (other.HasTags (_TagController.Tags))
 			{
 				_IsRescuing = true;
 			}
@@ -80,7 +81,7 @@ namespace SoulEngine
 
 		private void OnTriggerExit2D (Collider2D other)
 		{
-			if (other.HasTags (_TagComponent.Tags))
+			if (other.HasTags (_TagController.Tags))
 			{
 				_IsRescuing = false;
 			}

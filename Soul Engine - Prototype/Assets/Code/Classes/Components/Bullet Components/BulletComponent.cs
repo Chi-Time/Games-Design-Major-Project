@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SoulEngine
 {
+	[RequireComponent (typeof (Rigidbody2D), typeof (Collider2D), typeof (TagComponent))]
 	public abstract class BulletComponent : MonoBehaviour, IRequireComponents, IDamage
 	{
 		/// <summary>The damage the projectile inflicts.</summary>
@@ -22,7 +23,7 @@ namespace SoulEngine
 
 		protected Transform _Transform = null;
 		protected Rigidbody2D _Rigidbody2D = null;
-		protected TagComponent _TagComponent = null;
+		protected TagController _TagController = new TagController ();
 
 		public IEnumerable<Type> RequiredComponents ()
 		{
@@ -38,7 +39,7 @@ namespace SoulEngine
 			SetupRigidbody ();
 			_Transform = GetComponent<Transform> ();
 			GetComponent<Collider2D> ().isTrigger = true;
-			_TagComponent = GetComponent<TagComponent> ();
+			_TagController.Construct (this);
 		}
 
 		private void SetupRigidbody ()
@@ -69,7 +70,7 @@ namespace SoulEngine
 
 		protected void OnTriggerEnter2D (Collider2D other)
 		{
-			if (other.HasTags (_TagComponent.Tags))
+			if (other.HasTags (_TagController.Tags))
 			{
 				EnteredCollider (other);
 			}
@@ -77,7 +78,7 @@ namespace SoulEngine
 
 		protected void OnTriggerExit2D (Collider2D other)
 		{
-			if (other.HasTags (_TagComponent.Tags))
+			if (other.HasTags (_TagController.Tags))
 			{
 				ExitedCollider (other);
 			}

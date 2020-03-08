@@ -6,7 +6,7 @@ namespace SoulEngine
 	{
 		protected override void Triggered (Collider2D other)
 		{
-			if (other.HasTags (_TagComponent.Tags))
+			if (other.HasTags (_TagController.Tags))
 			{
 				LevelSignals.OnPerspectiveSwitched?.Invoke ();
 				gameObject.SetActive (false);

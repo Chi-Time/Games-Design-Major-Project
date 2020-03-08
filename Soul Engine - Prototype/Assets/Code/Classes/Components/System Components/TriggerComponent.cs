@@ -2,14 +2,15 @@
 
 namespace SoulEngine
 {
-	[RequireComponent (typeof (Collider2D), typeof (TagComponent))]
+	[RequireComponent (typeof (Collider2D))]
 	public abstract class TriggerComponent : MonoBehaviour
 	{
-		protected TagComponent _TagComponent = null;
-		
+		[SerializeField]
+		protected TagController _TagController = new TagController ();
+
 		private void Awake ()
 		{
-			_TagComponent = GetComponent<TagComponent> ();
+			_TagController.Construct (this);
 			GetComponent<Collider2D> ().isTrigger = true;
 		}
 

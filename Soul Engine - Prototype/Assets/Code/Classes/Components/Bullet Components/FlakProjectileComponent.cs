@@ -123,7 +123,7 @@ namespace SoulEngine
 			_Explosion.gameObject.SetActive (true);
 			//BUG: Needing to construct the explosion upon activation is bad and leads to an error if not specifically HERE.
 			//TODO: Find a way around doing this, constructing the explosion is needless and prone to bugs.
-			_Explosion.Construct (_Damage, _TagComponent.Tags);
+			_Explosion.Construct (_Damage, _TagController.Tags);
 		}
 
 		protected override void EnteredCollider (Collider2D other)

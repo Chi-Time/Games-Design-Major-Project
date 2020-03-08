@@ -6,8 +6,6 @@ namespace SoulEngine
 	[Serializable]
 	public class TagController
 	{
-		/// <summary>The cached tag of this gameobject.</summary>
-		public EditorTags Tag => _Tag;
 		/// <summary>The various tags this component is looking for.</summary>
 		public EditorTags[] Tags 
 		{
@@ -19,11 +17,10 @@ namespace SoulEngine
 		[Tooltip ("The various tags to look for."), SerializeField]
 		private EditorTags[] _Tags = null;
 
-		private EditorTags _Tag;
-
 		public void Construct (MonoBehaviour owner)
 		{
-			_Tag = TagManager.TagsByString[owner.gameObject.tag];
+			if (owner.GetComponent<TagComponent> () == null)
+				owner.gameObject.AddComponent<TagComponent> ();
 		}
 	}
 }

@@ -90,7 +90,7 @@ namespace SoulEngine
 		
 		private void SetupExplosion (Vector3 position)
 		{
-			_Explosion.Construct (_Damage, _TagComponent.Tags);
+			_Explosion.Construct (_Damage, _TagController.Tags);
 			_Explosion.transform.position = position;
 			_Explosion.gameObject.SetActive (true);
 		}
