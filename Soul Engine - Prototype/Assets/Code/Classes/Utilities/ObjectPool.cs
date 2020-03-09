@@ -93,7 +93,7 @@ namespace Utilities
             {
                 for (int j = 0; j < size; j++)
                 {
-                    _InactivePool.Add (CreatePoolObject (prefab));
+                    _InactivePool.Add (CreatePoolObject (j, prefab));
                 }
             }
         }
@@ -110,9 +110,10 @@ namespace Utilities
             _PoolHolder = holder;
         }
 
-        private T CreatePoolObject (T poolPrefab)
+        private T CreatePoolObject (int index, T poolPrefab)
         {
             var poolObject = MonoBehaviour.Instantiate (poolPrefab, _PoolHolder, true);
+            poolObject.name = poolPrefab.name + " - " + index.ToString ();
             poolObject.gameObject.SetActive (false);
             poolObject.transform.position = _PoolHolder.position;
 

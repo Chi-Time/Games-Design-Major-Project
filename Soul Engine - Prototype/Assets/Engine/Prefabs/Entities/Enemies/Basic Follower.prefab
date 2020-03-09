@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 9171873083143354383}
   - component: {fileID: -6479988862266859580}
   - component: {fileID: 1943781997364463795}
+  - component: {fileID: 6888186898285412461}
   m_Layer: 0
   m_Name: Basic Follower
   m_TagString: Enemy
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6162c7b82652548ac2a3abece89cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Health: 25
+  _Health: 15
   _ShouldDestroy: 0
 --- !u!114 &9171873083143354383
 MonoBehaviour:
@@ -252,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Speed: 5
   _ShouldFacePath: 1
+  _ShouldDisableWhenDone: 1
   _CurveType: 6
 --- !u!114 &1943781997364463795
 MonoBehaviour:
@@ -265,3 +267,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ce674f556d42df81874c2c8fd4d568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6888186898285412461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171873083143354371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13d7650e15d4656b796688ff0299040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Amount: 4
+  _Variance: 2.5
+  _ItemPrefab: {fileID: 7691610331236618633, guid: 88a2f964e35ce984db2931b76b902296,
+    type: 3}

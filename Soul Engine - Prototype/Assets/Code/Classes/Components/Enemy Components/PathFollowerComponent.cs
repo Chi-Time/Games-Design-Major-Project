@@ -87,8 +87,9 @@ namespace SoulEngine
 			float lookOffset = 0.01f;
 			value += lookOffset;
 			
+			//BUG: Comparison to null, find a way to remove it.
 			if (value > 0.99f || Path == null)
-				return; 
+				return;
 			
 			_Transform.up = Path.GetPosition(value) - _Transform.position;
 		}

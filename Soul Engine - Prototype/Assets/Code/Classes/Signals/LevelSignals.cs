@@ -13,6 +13,14 @@ namespace SoulEngine
 		public static Action<int> OnResourceCollected;
 		public static Action<GameObject> OnEntityEMP;
 		public static Action<GameObject> OnEntityKilled;
+
+		public static void KillEntity (GameObject other)
+		{
+			Debug.Log ("EVENT CALLING");
+			Debug.Log (OnEntityKilled == null);
+			OnEntityKilled?.Invoke (other);
+		}
+		
 		public static Action<GameObject> OnEntityRescued;
 		public static Action<bool, float> OnEntityBubbled;
 		public static Action<IDamage, GameObject> OnEntityHit;

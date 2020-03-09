@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 9171873083143354369}
   - component: {fileID: -6479988862266859580}
   - component: {fileID: 4692539278354375769}
+  - component: {fileID: 6089905198742381397}
   m_Layer: 0
   m_Name: Basic Shooter
   m_TagString: Enemy
@@ -256,7 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Tags: 
 --- !u!114 &9171873083143354369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Speed: 3
   _ShouldFacePath: 0
+  _ShouldDisableWhenDone: 1
+  _CurveType: 5
 --- !u!114 &4692539278354375769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +299,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _UsePlayer: 1
   _Target: {fileID: 0}
+--- !u!114 &6089905198742381397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171873083143354371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13d7650e15d4656b796688ff0299040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Amount: 6
+  _Variance: 2
+  _ItemPrefab: {fileID: 7691610331236618633, guid: 88a2f964e35ce984db2931b76b902296,
+    type: 3}
 --- !u!1001 &6051892669913560283
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -27,7 +27,8 @@ namespace SoulEngine
             else
                 gameObject.SetActive (false);
 
-            LevelSignals.OnEntityKilled?.Invoke (gameObject);
+            print ("Dead, calling event" + gameObject.GetInstanceID ());
+            LevelSignals.KillEntity (this.gameObject);
         }
 
         /// <summary>Damages the object by the specified amount.</summary>

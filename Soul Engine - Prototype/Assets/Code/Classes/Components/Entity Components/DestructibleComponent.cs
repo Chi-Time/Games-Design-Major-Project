@@ -1,9 +1,12 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace SoulEngine
 {
+	[RequireComponent (typeof (ItemDropComponent))]
+	[RequireComponent (typeof (Rigidbody2D),typeof (Collider2D), typeof (HealthComponent))]
 	public class DestructibleComponent : MonoBehaviour, IRequireComponents
 	{
 		public GameObject GameObject => gameObject;
@@ -12,7 +15,8 @@ namespace SoulEngine
 		private int _Score = 0;
 		
 		private HealthComponent _HealthComponent = null;
-		
+		private ItemDropComponent _ItemDropComponent = null;
+
 		public IEnumerable<Type> RequiredComponents ()
 		{
 			return new Type[]
@@ -31,6 +35,7 @@ namespace SoulEngine
 			
 			GetComponent<Collider2D> ().isTrigger = true;
 			_HealthComponent = GetComponent<HealthComponent> ();
+			_ItemDropComponent = GetComponent<ItemDropComponent> ();
 		}
 
 		private void Break ()
@@ -59,6 +64,7 @@ namespace SoulEngine
 			if (Equals (gameObject, other))
 			{
 				Break ();
+				_ItemDropComponent.Drop ();
 			}
 		}
 		
