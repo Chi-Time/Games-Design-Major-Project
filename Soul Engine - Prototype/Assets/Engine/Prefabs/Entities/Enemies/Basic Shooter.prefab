@@ -311,10 +311,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13d7650e15d4656b796688ff0299040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Amount: 6
-  _Variance: 2
-  _ItemPrefab: {fileID: 7691610331236618633, guid: 88a2f964e35ce984db2931b76b902296,
-    type: 3}
+  _Items:
+  - _Name: Resource Star
+    _Amount: 4
+    _DropRate: 1
+    _ItemPrefab: {fileID: 7691610331236618633, guid: 88a2f964e35ce984db2931b76b902296,
+      type: 3}
+  _Variance: 2.5
 --- !u!1001 &6051892669913560283
 PrefabInstance:
   m_ObjectHideFlags: 0

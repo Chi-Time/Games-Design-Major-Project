@@ -49,7 +49,6 @@ namespace SoulEngine
 		{
 			if (Equals (other, gameObject))
 			{
-				print ("Taking damage: " + gameObject.name);
 				_Health.TakeDamage (damage.Damage);
 			}
 		}

@@ -26,8 +26,7 @@ namespace SoulEngine
                 Destroy (gameObject);
             else
                 gameObject.SetActive (false);
-
-            print ("Dead, calling event" + gameObject.GetInstanceID ());
+            
             LevelSignals.KillEntity (this.gameObject);
         }
 
