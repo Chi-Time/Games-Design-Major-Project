@@ -238,7 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc458dd396b41a49f70a1da509d4c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Tags: 
 --- !u!114 &-6479988862266859580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Speed: 5
   _ShouldFacePath: 1
+  _CurveType: 6
 --- !u!114 &1943781997364463795
 MonoBehaviour:
   m_ObjectHideFlags: 0

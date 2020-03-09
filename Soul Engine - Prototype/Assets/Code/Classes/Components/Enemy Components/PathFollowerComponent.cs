@@ -1,16 +1,22 @@
-﻿using Pixelplacement;
+﻿using System.Collections;
+using Pixelplacement;
 using UnityEngine;
+using Utilities;
 
 namespace SoulEngine
 {
 	public class PathFollowerComponent : MonoBehaviour
 	{
 		public Spline Path { get; set; }
-		
+
 		[Tooltip ("How long (in seconds) should this object take to complete their path?"), SerializeField]
-		private float _Speed;
-		[Tooltip ("Should the enemy face toward the path?"), SerializeField]
+		private float _Speed = 3f;
+		[Tooltip ("Should the follower face toward the path?"), SerializeField]
 		private bool _ShouldFacePath = false;
+		[Tooltip ("Should the follower disable at the end of it's path?"), SerializeField]
+		private bool _ShouldDisableWhenDone = true;
+		[Tooltip ("The animation type for the follower's movement."), SerializeField]
+		private LerpCurves.LerpType _CurveType = LerpCurves.LerpType.SmoothStep;
 		
 		private Transform _Transform;
 		private Rigidbody2D _Rigidbody2D;
@@ -30,18 +36,28 @@ namespace SoulEngine
 		{
 			if (Path == null)
 				return;
-			
-			Tween.Value (0f,
-			             1f,
-			             OnValueUpdated,
-			             6,
-			             0,
-			             null,
-			             Tween.LoopType.PingPong,
-			             null,
-			             OnPathComplete);
+
+			StartCoroutine (MoveTo (1f, _Speed));
 		}
-		
+
+		private IEnumerator MoveTo (float endValue, float length)
+		{
+			float time = 0.0f;
+			float startValue = 0.0f;
+
+			while (time <= length)
+			{
+				time += Time.fixedDeltaTime;
+				float t = LerpCurves.Curve (time / length, _CurveType);
+				OnValueUpdated (Mathf.Lerp (startValue, endValue, t));
+
+				yield return new WaitForFixedUpdate ();  
+			}
+
+			OnValueUpdated (endValue);
+			OnPathComplete ();
+		}
+
 		private void OnValueUpdated(float value)
 		{
 			_Rigidbody2D.MovePosition (Path.GetPosition (value));
@@ -52,13 +68,14 @@ namespace SoulEngine
 
 		private void OnPathComplete ()
 		{
-			gameObject.SetActive (false);
+			if (_ShouldDisableWhenDone)
+				gameObject.SetActive (false);
 		}
 		
 		private void OnDisable ()
 		{
 			LookAhead (0.0f);
-			//TODO: Figure out how to stop tweens if the player has killed and disabled the follower early.
+			StopAllCoroutines ();
 			
 			if (Path != null)
 				_Rigidbody2D.MovePosition (Path.GetPosition (0.0f));

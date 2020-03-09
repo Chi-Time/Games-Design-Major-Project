@@ -2,12 +2,14 @@
 
 namespace Utilities
 {
-	static class LerpCurves
+	//https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
+	public static class LerpCurves
 	{
 		public enum LerpType
 		{
-			EaseOut,
+			Linear,
 			EaseIn,
+			EaseOut,
 			Exponential,
 			Logarithmic,
 			SmoothStep,
@@ -18,12 +20,17 @@ namespace Utilities
 		{
 			switch (lerpType)
 			{
+				// Ugly hack but makes usability easier.
+				case LerpType.Linear:
+					return t;
 				case LerpType.EaseOut:
 					return EaseOut (t);
 				case LerpType.EaseIn:
 					return EaseIn (t);
 				case LerpType.Exponential:
 					return Exponential (t);
+				case LerpType.Logarithmic:
+					return Logarithmic (t);
 				case LerpType.SmoothStep:
 					return SmoothStep (t);
 				case LerpType.SmootherStep:
