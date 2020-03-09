@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace SoulEngine
 {
-	[RequireComponent (typeof (ItemDropComponent))]
 	[RequireComponent (typeof (Rigidbody2D),typeof (Collider2D), typeof (HealthComponent))]
+	[RequireComponent (typeof (ItemDropComponent))]
 	public class DestructibleComponent : MonoBehaviour, IRequireComponents
 	{
 		public GameObject GameObject => gameObject;

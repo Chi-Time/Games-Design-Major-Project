@@ -4,6 +4,7 @@ using Utilities;
 
 namespace SoulEngine
 {
+	[RequireComponent (typeof(Spline), typeof (SpawnComponent))]
 	public class PathSpawnerComponent : MonoBehaviour
 	{
 		[Tooltip ("What is the name of the current path?"), SerializeField]

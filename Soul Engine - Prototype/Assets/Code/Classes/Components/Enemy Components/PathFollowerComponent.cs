@@ -5,6 +5,7 @@ using Utilities;
 
 namespace SoulEngine
 {
+	[RequireComponent (typeof (Rigidbody2D))]
 	public class PathFollowerComponent : MonoBehaviour
 	{
 		public Spline Path { get; set; }
@@ -28,8 +29,6 @@ namespace SoulEngine
 			_Rigidbody2D.isKinematic = true;
 			_Rigidbody2D.gravityScale = 0.0f;
 			_Rigidbody2D.freezeRotation = true;
-
-			GetComponent<Collider2D> ().isTrigger = true;
 		}
 
 		private void OnEnable ()

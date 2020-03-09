@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,9 @@ using UnityEngine;
 
 namespace SoulEngine
 {
+    [RequireComponent (typeof (Rigidbody2D), typeof (Collider2D))]
+    [RequireComponent (typeof (HealthComponent), typeof (TagComponent), typeof (WeaponSystemComponent))]
+    [RequireComponent(typeof (InputMoveComponent), typeof (InputWeaponComponent), typeof (InputFocusComponent))]
     public class PlayerController : MonoBehaviour, IRequireComponents
     {
         public GameObject GameObject => gameObject;

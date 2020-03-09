@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 1754823945326937527}
   - component: {fileID: 1754823945326937526}
   - component: {fileID: 1754823945326937481}
-  - component: {fileID: 6713061897550151414}
+  - component: {fileID: 315774821}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -655,11 +655,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Name: Simple Path
-  _SpawnCount: 5
+  _SpawnCount: 6
   _SpawnDelay: 0.5
-  _FollowerPrefab: {fileID: -6479988862266859580, guid: d297fd9d3b3eb2e45907a43967dded2a,
+  _FollowerPrefab: {fileID: -6479988862266859580, guid: 6baa04b46936dd54992229ada2b66d4c,
     type: 3}
---- !u!114 &6713061897550151414
+--- !u!114 &315774821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -668,11 +668,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754823945326937525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6162c7b82652548ac2a3abece89cbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 39f9ede035d04ef48a49807d4c7b6157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Health: 16
-  _ShouldDestroy: 0
+  _SpawnOffset: 5
 --- !u!1 &1754823945736706274
 GameObject:
   m_ObjectHideFlags: 0

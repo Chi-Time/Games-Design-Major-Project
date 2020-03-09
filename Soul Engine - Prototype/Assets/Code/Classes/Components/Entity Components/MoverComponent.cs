@@ -2,7 +2,6 @@
 
 namespace SoulEngine
 {
-	//[RequireComponent (typeof (Rigidbody2D))]
 	public class MoverComponent : MonoBehaviour
 	{
 		[Tooltip ("How fast does the component move across the world?"), SerializeField]
@@ -14,10 +13,6 @@ namespace SoulEngine
 		private void Awake ()
 		{
 			_Transform = GetComponent<Transform> ();
-			// _Rigidbody2D = GetComponent<Rigidbody2D> ();
-			// _Rigidbody2D.isKinematic = true;
-			// _Rigidbody2D.gravityScale = 0.0f;
-			// _Rigidbody2D.freezeRotation = true;
 		}
 
 		private void FixedUpdate ()
@@ -27,8 +22,7 @@ namespace SoulEngine
 
 		private void Move ()
 		{
-			Vector2 delta = _Transform.up * _Speed * Time.fixedDeltaTime;
-			//_Rigidbody2D.MovePosition (_Rigidbody2D.position + delta);	
+			Vector2 delta = _Transform.up * (_Speed * Time.fixedDeltaTime);
 			_Transform.Translate (delta);
 		}
 	}

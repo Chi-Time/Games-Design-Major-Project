@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace SoulEngine
 {
-	[RequireComponent (typeof (TagComponent))]
+	[RequireComponent (typeof (Collider2D), typeof (TagComponent))]
 	public class RescueComponent : MonoBehaviour, IRequireComponents
 	{
 		public GameObject GameObject => gameObject;

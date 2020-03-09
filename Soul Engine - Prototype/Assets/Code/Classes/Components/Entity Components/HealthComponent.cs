@@ -26,8 +26,8 @@ namespace SoulEngine
                 Destroy (gameObject);
             else
                 gameObject.SetActive (false);
-            
-            LevelSignals.KillEntity (this.gameObject);
+
+            LevelSignals.OnEntityKilled?.Invoke (gameObject);
         }
 
         /// <summary>Damages the object by the specified amount.</summary>
