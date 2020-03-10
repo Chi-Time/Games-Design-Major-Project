@@ -8,17 +8,18 @@ namespace SoulEngine
 	[RequireComponent (typeof (Rigidbody2D))]
 	public class PathFollowerComponent : MonoBehaviour
 	{
-		public Spline Path { get; set; }
-
-		[Tooltip ("How long (in seconds) should this object take to complete their path?"), SerializeField]
-		private float _Speed = 3f;
+		public float Speed => _Speed;
+		public Spline Path => _Path;
+		public LerpCurves.LerpType Curve => _Curve;
+		
 		[Tooltip ("Should the follower face toward the path?"), SerializeField]
 		private bool _ShouldFacePath = false;
 		[Tooltip ("Should the follower disable at the end of it's path?"), SerializeField]
 		private bool _ShouldDisableWhenDone = true;
-		[Tooltip ("The animation type for the follower's movement."), SerializeField]
-		private LerpCurves.LerpType _CurveType = LerpCurves.LerpType.SmoothStep;
 		
+		private float _Speed = 0.0f;
+		private Spline _Path = null;
+		private LerpCurves.LerpType _Curve = LerpCurves.LerpType.Linear;
 		private Transform _Transform;
 		private Rigidbody2D _Rigidbody2D;
 		
@@ -31,12 +32,19 @@ namespace SoulEngine
 			_Rigidbody2D.freezeRotation = true;
 		}
 
+		public void Setup (float speed, Spline path, LerpCurves.LerpType curve)
+		{
+			_Speed = speed;
+			_Path = path;
+			_Curve = curve;
+		}
+
 		private void OnEnable ()
 		{
 			if (Path == null)
 				return;
 
-			StartCoroutine (MoveTo (1f, _Speed));
+			StartCoroutine (MoveTo (1f, Speed));
 		}
 
 		private IEnumerator MoveTo (float endValue, float length)
@@ -47,7 +55,7 @@ namespace SoulEngine
 			while (time <= length)
 			{
 				time += Time.fixedDeltaTime;
-				float t = LerpCurves.Curve (time / length, _CurveType);
+				float t = LerpCurves.Curve (time / length, Curve);
 				OnValueUpdated (Mathf.Lerp (startValue, endValue, t));
 
 				yield return new WaitForFixedUpdate ();  

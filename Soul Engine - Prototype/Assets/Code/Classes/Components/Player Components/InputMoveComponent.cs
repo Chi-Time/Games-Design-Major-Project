@@ -6,6 +6,12 @@ namespace SoulEngine
 {
 	public class InputMoveComponent : MonoBehaviour, IRequireComponents
 	{
+		public float Speed 
+		{
+			get => _Speed;
+			set => _Speed = value;
+		}
+		
 		public GameObject GameObject => gameObject;
 		
 		[Tooltip ("The speed at which the object moves."), SerializeField]

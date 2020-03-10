@@ -7,8 +7,15 @@ namespace SoulEngine
 	[RequireComponent (typeof(Spline), typeof (SpawnComponent))]
 	public class PathSpawnerComponent : MonoBehaviour
 	{
+		[Header ("Path Settings")]
 		[Tooltip ("What is the name of the current path?"), SerializeField]
 		private string _Name = "";
+		[Tooltip ("The speed at which the followers move across the path. (In Seconds)"), SerializeField]
+		private float _Speed = 5f;
+		[Tooltip ("The animation type for the follower's movement."), SerializeField]
+		private LerpCurves.LerpType _CurveType = LerpCurves.LerpType.SmoothStep;
+		
+		[Header ("Spawn Settings")]
 		[Tooltip ("How many enemies should be spawned on the current path."), SerializeField]
 		private int _SpawnCount = 1;
 		[Tooltip ("The delay between each enemy spawn on this path."), SerializeField]
@@ -43,7 +50,7 @@ namespace SoulEngine
 			if (follower != null)
 			{
 				_SpawnedCounter++;
-				follower.Path = _Path;
+				follower.Setup (_Speed, _Path, _CurveType);
 				follower.transform.position = _Path.GetPosition (0.0f);
 				follower.gameObject.SetActive (true);
 			}

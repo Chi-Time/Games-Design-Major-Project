@@ -9,6 +9,6 @@
 		/// <summary>The timescale the game runs at when boosted.</summary>
 		public static readonly float BoostTimeScale = 1.35f;
 		/// <summary>The current difficulty mode of the game.</summary>
-		public static Diificulty CurrentDifficulty = Diificulty.Normal;
+		public static Difficulty CurrentDifficulty = Difficulty.Normal;
 	}
 }

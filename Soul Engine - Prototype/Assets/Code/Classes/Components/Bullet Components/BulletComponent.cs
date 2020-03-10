@@ -85,6 +85,11 @@ namespace SoulEngine
 			}
 		}
 
+		protected void OnBecameInvisible ()
+		{
+			Cull ();
+		}
+
 		protected abstract void EnteredCollider (Collider2D other);
 		protected abstract void ExitedCollider (Collider2D other);
 	}

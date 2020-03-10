@@ -10,8 +10,8 @@ namespace SoulEngine
 		[Tooltip ("The various tags this component should look for."), SerializeField]
 		private TagController _TagController = new TagController ();
 
-		private bool _IsMagnetised = false;
 		private Transform _Target = null;
+		private bool _IsMagnetised = false;
 		private Transform _Transform = null;
 		private Rigidbody2D _Rigidbody2D = null;
 

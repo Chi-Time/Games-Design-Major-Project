@@ -34,7 +34,7 @@ namespace SoulEngine
 			
 			for (int i = 0; i < _Count; i++)
 			{
-				if (_NullObject == null)
+				if (_NullObject)
 					continue;
 			}
 
