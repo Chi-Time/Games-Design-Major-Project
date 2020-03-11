@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Damage: 2
-  _Speed: 12
+  _Speed: 15
   _Lifetime: 5
   _ShouldDestroy: 0
   _TagController:
