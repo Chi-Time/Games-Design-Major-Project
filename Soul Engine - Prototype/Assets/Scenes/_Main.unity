@@ -5519,10 +5519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421549f36c2a99e4a90226f16a0e6ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TimerLabel:
-    _FontSize: 90
-    _TextColor: {r: 1, g: 1, b: 1, a: 1}
-    _LabelPosition: {x: 925, y: 5}
 --- !u!1 &1546131004
 GameObject:
   m_ObjectHideFlags: 0
@@ -7613,7 +7609,7 @@ MonoBehaviour:
   _Name: Simple Path
   _Speed: 15
   _CurveType: 2
-  _SpawnCount: 6
+  _SpawnCount: 1
   _SpawnDelay: 0.5
   _FollowerPrefab: {fileID: -6479988862266859580, guid: d297fd9d3b3eb2e45907a43967dded2a,
     type: 3}
@@ -7673,7 +7669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1198026641601003784
 GameObject:
   m_ObjectHideFlags: 0
@@ -8024,7 +8020,7 @@ PrefabInstance:
     - target: {fileID: 1754823945326937525, guid: b628b970c005e6448b9c3f7a91ebddb4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1754823945326937527, guid: b628b970c005e6448b9c3f7a91ebddb4,
         type: 3}
@@ -8431,12 +8427,12 @@ PrefabInstance:
     - target: {fileID: 1082260647146610478, guid: 175f4dc7c956e144080d07845ce3e300,
         type: 3}
       propertyPath: _UseKeyboard
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1082260647146610478, guid: 175f4dc7c956e144080d07845ce3e300,
         type: 3}
       propertyPath: _SlowGlobally
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9001782416709868065, guid: 175f4dc7c956e144080d07845ce3e300, type: 3}

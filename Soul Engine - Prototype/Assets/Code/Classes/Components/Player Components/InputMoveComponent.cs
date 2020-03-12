@@ -6,6 +6,8 @@ namespace SoulEngine
 {
 	public class InputMoveComponent : MonoBehaviour, IRequireComponents
 	{
+		public Vector2 Direction { get; private set; }
+
 		public float Speed 
 		{
 			get => _Speed;
@@ -16,12 +18,13 @@ namespace SoulEngine
 		
 		[Tooltip ("The speed at which the object moves."), SerializeField]
 		private float _Speed = 12.0f;
-		[Tooltip ("The axis name to use for horizontal input."), SerializeField]
-		private string _HorizontalAxis = "Horizontal";
 		[Tooltip ("The axis name to use for vertical input."), SerializeField]
 		private string _VerticalAxis = "Vertical";
+		[Tooltip ("The axis name to use for horizontal input."), SerializeField]
+		private string _HorizontalAxis = "Horizontal";
 		
 		private bool _SwapAxes = false;
+		private Vector3 prevPos = Vector3.zero;
 		private Transform _Transform = null;
 		/// <summary>Reference to the object's Rigidbody component.</summary>
 		private Rigidbody2D _Rigidbody2D = null;
@@ -51,6 +54,8 @@ namespace SoulEngine
 		private void FixedUpdate ()
 		{
 			_Transform.Translate (CalculateInputVelocity ());
+			Direction = (_Transform.position - prevPos).normalized;
+			prevPos = _Transform.position;
 			//_Rigidbody2D.MovePosition ((Vector2)_Transform.localPosition + CalculateInputVelocity ());
 		}
 

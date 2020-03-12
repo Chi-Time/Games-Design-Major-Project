@@ -14,7 +14,7 @@ namespace SoulEngine
 		[Tooltip ("How fast does the component move across the world?"), SerializeField]
 		private float _Speed = 10.0f;
 
-		private Vector3 prevPos = Vector3.back;
+		private Vector3 prevPos = Vector3.zero;
 		private Transform _Transform = null;
 		public Rigidbody2D _Rigidbody2D = null;
 		

@@ -281,10 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82b091a03cc424d9defc50556547ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 3
   _ShouldFacePath: 0
   _ShouldDisableWhenDone: 1
-  _CurveType: 5
 --- !u!114 &4692539278354375769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _UsePlayer: 1
-  _Target: {fileID: 0}
+  _World: {fileID: 0}
 --- !u!114 &6089905198742381397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +333,12 @@ PrefabInstance:
       propertyPath: _FireRate
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 6062785132802639426, guid: 01f5a3713ca379b4a80f8ca76d9dca85,
+        type: 3}
+      propertyPath: _BulletPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5473513379085613911, guid: 9b52f0bbf359a6849893ba2dabb3b60b,
+        type: 3}
     - target: {fileID: 6062785132802639427, guid: 01f5a3713ca379b4a80f8ca76d9dca85,
         type: 3}
       propertyPath: m_LocalPosition.x

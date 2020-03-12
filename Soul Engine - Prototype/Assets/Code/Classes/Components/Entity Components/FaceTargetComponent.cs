@@ -11,11 +11,14 @@ namespace SoulEngine
 		private MoverComponent _World = null;
 		private Transform _Target = null;
 		private Transform _Transform = null;
+		private InputMoveComponent _InputMoveCompoenent = null;
+		private Vector3 _AdjustedPosition = Vector3.zero;
 
 		private void Awake ()
 		{
 			FindTarget ();
 			_Transform = GetComponent<Transform> ();
+			_InputMoveCompoenent = FindObjectOfType<InputMoveComponent> ();
 		}
 
 		private void Start ()
@@ -42,9 +45,15 @@ namespace SoulEngine
 			if (_Target == null)
 				return;
 
-			var position = _Target.position + (Vector3)(_World.Direction * _World.Speed);
+			//var position = _Target.position + ( _World.Direction * ( _World.Speed ) );
 			
-			_Transform.up = position - _Transform.position;
+			_Transform.up = _Target.position - _Transform.position;
 		}
+
+		// private void OnDrawGizmos ()
+		// {
+		// 	_AdjustedPosition = _Target.position + ( _World.Direction * ( _World.Speed ) );
+		// 	Gizmos.DrawLine (_Transform.position, _AdjustedPosition);
+		// }
 	}
 }

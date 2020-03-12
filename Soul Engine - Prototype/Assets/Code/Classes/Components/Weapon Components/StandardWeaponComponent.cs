@@ -21,7 +21,7 @@ namespace SoulEngine
                     // And then proceed to fire a function when we want them to setup for use such as a .Construct () method.
                     // This means that they can then do any and all of the calculations that they need to without fear of worrying about things moving.
                     bullet.position = transform.position;
-                    bullet.rotation = Quaternion.Euler (0, 0, _Transform.rotation.eulerAngles.z);
+                    //bullet.rotation = Quaternion.Euler (0, 0, _Transform.rotation.eulerAngles.z);
                     //TODO: Store bullet anchor position.
                     bullet.gameObject.SetActive (true);
                     //bullet.Activate ();
