@@ -1,22 +1,23 @@
-﻿using UnityEngine;
+﻿using Pixelplacement;
+using UnityEngine;
 
 namespace SoulEngine
 {
-	public class SpawnComponent : MonoBehaviour
+	public class EnemySpawnComponent : MonoBehaviour
 	{
 		[Tooltip ("The offset from the player that this path will spawn at."), SerializeField]
 		private float _SpawnOffset = 5.0f;
 
+		private bool _HasSpawned = false;
 		private Transform _Camera = null;
-		private Transform _Mover = null;
 		private Transform _Transform = null;
 		private MonoBehaviour[] _Components = null;
 		
 		private void Awake ()
 		{
 			_Transform = GetComponent<Transform> ();
+			_Camera = FindObjectOfType<Camera> ().GetComponent<Transform> ();
 			_Components = GetComponents<MonoBehaviour> ();
-			_Camera = FindObjectOfType<Transform> ();
 			ActivateComponents (false);
 		}
 
@@ -32,19 +33,23 @@ namespace SoulEngine
 			}
 		}
 
-		private void Start ()
-		{
-			_Mover = FindObjectOfType<MoverComponent> ().transform;
-		}
-
 		private void Update ()
 		{
-			if (_Camera.position.y + _SpawnOffset >= _Transform.position.y)
+			if (_Camera.position.y + _SpawnOffset >= _Transform.position.y && false == _HasSpawned)
 			{
-				_Transform.SetParent (_Mover);
-                ActivateComponents(true);
-                this.enabled = false;
-            }
+				ActivateComponents(true);
+				_HasSpawned = true;
+			}
+			
+			if (_Camera.position.y - _SpawnOffset >= _Transform.position.y && _HasSpawned == true)
+			{
+				this.gameObject.SetActive (false);
+			}
+		}
+
+		private void OnDisable ()
+		{
+			_HasSpawned = false;
 		}
 	}
 }
