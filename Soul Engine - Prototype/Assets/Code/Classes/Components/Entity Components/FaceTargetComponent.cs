@@ -45,15 +45,7 @@ namespace SoulEngine
 			if (_Target == null)
 				return;
 
-			//var position = _Target.position + ( _World.Direction * ( _World.Speed ) );
-			
 			_Transform.up = _Target.position - _Transform.position;
 		}
-
-		// private void OnDrawGizmos ()
-		// {
-		// 	_AdjustedPosition = _Target.position + ( _World.Direction * ( _World.Speed ) );
-		// 	Gizmos.DrawLine (_Transform.position, _AdjustedPosition);
-		// }
 	}
 }

@@ -19,6 +19,8 @@ namespace SoulEngine
 			_Camera = FindObjectOfType<Camera> ();
 			ActivateComponents (false);
 		}
+		
+		
 
 		private void ActivateComponents (bool shouldActivate)
 		{

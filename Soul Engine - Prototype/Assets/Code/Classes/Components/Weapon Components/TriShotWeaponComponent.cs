@@ -10,6 +10,8 @@ namespace SoulEngine
 		private float _Angle = 180;
 		[Tooltip ("The number of bullets to fire. (Use whole numbers only.)"), SerializeField]
 		private float _ShotCount = 3f;
+		[Tooltip ("The offset from the center of the weapon."), SerializeField]
+		private float _SpawnOffset = 0.0f;
 
 		private float _AngleStep = 0.0f;
 		private float _StartAngle = 0.0f;
@@ -17,7 +19,7 @@ namespace SoulEngine
 		protected void Start ()
 		{
 			_AngleStep = _Angle / _ShotCount;
-			_StartAngle = Mathf.Floor(_ShotCount / 2) * Mathf.Abs (_AngleStep);
+			_StartAngle = -Mathf.Floor(_ShotCount / 2) * Mathf.Abs (_AngleStep);
 		}
 
 		protected override void Shoot ()
@@ -33,7 +35,11 @@ namespace SoulEngine
 
 				if (bullet != null)
 				{
-					bullet.position = _Transform.position;
+					float projectileDirXPosition =
+						_Transform.position.x - Mathf.Sin (( currentAngle * Mathf.PI ) / 180) * _SpawnOffset;
+					float projectileDirYPosition =
+						_Transform.position.y + Mathf.Cos (( currentAngle * Mathf.PI ) / 180) * _SpawnOffset;
+					bullet.position = new Vector3 (projectileDirXPosition, projectileDirYPosition, 0);
 					bullet.rotation = Quaternion.Euler (0, 0, currentAngle + _Transform.rotation.eulerAngles.z);
 					bullet.gameObject.SetActive (true);
 				}
