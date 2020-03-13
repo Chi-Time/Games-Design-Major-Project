@@ -4,16 +4,30 @@ namespace SoulEngine
 {
 	public class MultiShotWeaponComponent : ProjectileWeaponComponent
 	{
-		[Range (1, 64), SerializeField]
-		private float _ShotCount = 0;
+		//TODO: Add spawn offset so that bullets aren't starting inside of the object.
+		//TODO: Add use case for firing even number of projectiles.
+		[Tooltip("The angle the bullet fires from the weapon."), SerializeField]
+		private float _Angle = 180;
+		[Tooltip ("The number of bullets to fire. (Use whole numbers only.)"), SerializeField]
+		private float _ShotCount = 3f;
+		[Tooltip ("The offset from the center of the weapon."), SerializeField]
+		private float _SpawnOffset = 0.0f;
+
+		private float _AngleStep = 0.0f;
+		private float _StartAngle = 0.0f;
+
+		protected void Start ()
+		{
+			_AngleStep = _Angle / _ShotCount;
+			_StartAngle = -Mathf.Floor (_ShotCount / 2) * Mathf.Abs (_AngleStep);
+		}
 
 		protected override void Shoot ()
 		{
 			if (_BulletPools.Length <= 0)
 				return;
 
-			var currentAngle = 0.0f;
-			var angleStep = 360f / _ShotCount;
+			var currentAngle = _StartAngle;
 
 			for (int i = 0; i < _ShotCount; i++)
 			{
@@ -21,18 +35,16 @@ namespace SoulEngine
 
 				if (bullet != null)
 				{
-					//BUG: Set transformations BEFORE setting the object as active.
-					// IF we don't do this, then we transform the object after it's OnEnable has been called and screw up any and all calculations which are being performed.
-					// This is a naff bug and a custom callback will need to be added so that we "get" bulletcomponents from the pool
-					// And then proceed to fire a function when we want them to setup for use such as a .Construct () method.
-					// This means that they can then do any and all of the calculations that they need to without fear of worrying about things moving.
-					bullet.position = _Transform.position;
+					float projectileDirXPosition =
+						_Transform.position.x - Mathf.Sin (( currentAngle * Mathf.PI ) / 180) * _SpawnOffset;
+					float projectileDirYPosition =
+						_Transform.position.y + Mathf.Cos (( currentAngle * Mathf.PI ) / 180) * _SpawnOffset;
+					bullet.position = new Vector3 (projectileDirXPosition, projectileDirYPosition, 0);
 					bullet.rotation = Quaternion.Euler (0, 0, currentAngle + _Transform.rotation.eulerAngles.z);
-					//TODO: Store bullet anchor position.
 					bullet.gameObject.SetActive (true);
 				}
-
-				currentAngle += angleStep;
+				
+				currentAngle += _AngleStep;
 			}
 		}
 	}

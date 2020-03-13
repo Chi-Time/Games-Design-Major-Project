@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TagController:
-    _Tags: 
+    _Tags: 05000000
 --- !u!114 &3847424526835502350
 MonoBehaviour:
   m_ObjectHideFlags: 0

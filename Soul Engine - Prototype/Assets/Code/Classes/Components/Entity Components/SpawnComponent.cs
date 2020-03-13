@@ -16,7 +16,7 @@ namespace SoulEngine
 		{
 			_Transform = GetComponent<Transform> ();
 			_Components = GetComponents<MonoBehaviour> ();
-			_Camera = FindObjectOfType<Transform> ();
+			_Camera = FindObjectOfType<Camera> ().transform;
 			ActivateComponents (false);
 		}
 

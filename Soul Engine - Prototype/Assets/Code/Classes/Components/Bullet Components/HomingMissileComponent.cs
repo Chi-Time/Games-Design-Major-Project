@@ -49,7 +49,12 @@ namespace SoulEngine
 				_Transform.up = _Target.position - _Transform.position;
 			}
 
-			_Rigidbody2D.MovePosition (_Rigidbody2D.position + (Vector2)_Transform.up * (_Speed * Time.deltaTime));
+			
+			//TODO: Normalise missile as it currently moves incredibly fast on diagonals
+			var velocity = _Speed * Time.deltaTime;
+			var delta = _Transform.up * velocity;
+
+			_Rigidbody2D.MovePosition (_Rigidbody2D.position + (Vector2)delta);
 		}
 
 		private void TrackTarget ()

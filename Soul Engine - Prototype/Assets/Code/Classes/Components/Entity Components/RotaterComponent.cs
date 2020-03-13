@@ -4,7 +4,7 @@ namespace SoulEngine
 {
 	public class RotaterComponent : MonoBehaviour
 	{
-		[Tooltip (""), SerializeField]
+		[Tooltip ("The speed at which the object rotates in the world."), SerializeField]
 		private float _Speed = 0.0f;
 		[Tooltip (""), SerializeField]
 		private bool _ShouldStep = false;

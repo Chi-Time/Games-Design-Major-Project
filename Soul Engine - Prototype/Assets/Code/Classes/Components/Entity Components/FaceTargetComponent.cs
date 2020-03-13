@@ -6,24 +6,14 @@ namespace SoulEngine
 	{	
 		[Tooltip ("Should the object look at the player by default?"), SerializeField]
 		private bool _UsePlayer = true;
-		[Tooltip ("The target that we should turn to face."), SerializeField]
 
-		private MoverComponent _World = null;
 		private Transform _Target = null;
 		private Transform _Transform = null;
-		private InputMoveComponent _InputMoveCompoenent = null;
-		private Vector3 _AdjustedPosition = Vector3.zero;
 
 		private void Awake ()
 		{
 			FindTarget ();
 			_Transform = GetComponent<Transform> ();
-			_InputMoveCompoenent = FindObjectOfType<InputMoveComponent> ();
-		}
-
-		private void Start ()
-		{
-			_World = FindObjectOfType<MoverComponent> ();
 		}
 
 		private void FindTarget ()

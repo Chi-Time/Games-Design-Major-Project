@@ -13,6 +13,10 @@ namespace SoulEngine
 			_WeaponSystem = GetComponent<WeaponSystemComponent> ();
 		}
 
+		protected override void OnTriggerEnter2D (Collider2D other)
+		{
+		}
+
 		protected void Update ()
 		{
 			_WeaponSystem.Fire ();

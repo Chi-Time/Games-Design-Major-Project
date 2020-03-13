@@ -42,11 +42,11 @@ namespace SoulEngine
 			{
 				if (Input.GetKeyDown (key))
 				{
-					_InputMoveComponent.Speed *= 0.75f;
+					_InputMoveComponent.Speed *= Globals.SlowedTimeScale;
 				}
 				else if (Input.GetKeyUp (key))
 				{
-					_InputMoveComponent.Speed /= 0.75f;
+					_InputMoveComponent.Speed /= Globals.SlowedTimeScale;
 				}
 			}
 		}
