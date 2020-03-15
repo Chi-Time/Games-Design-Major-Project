@@ -14,7 +14,7 @@ namespace SoulEngine
 		private void OnDrawGizmos ()
 		{
 			if (_Transform != null)
-				Debug.DrawRay (_Transform.position, Vector2.up * _Range, Color.red);
+				Debug.DrawRay (_Transform.position, Vector2.up * _Range, Color.green);
 		}
 
 		protected override void OnEnable ()
