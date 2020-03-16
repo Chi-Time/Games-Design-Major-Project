@@ -293,8 +293,6 @@ MonoBehaviour:
   _FlashCount: 2
   _FlashColor: {r: 1, g: 0.45962918, b: 0, a: 1}
   _Curve: 6
-  _FlashIndex: 0
-  _FlashLength: 0
 --- !u!114 &23703844
 MonoBehaviour:
   m_ObjectHideFlags: 0

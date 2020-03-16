@@ -5570,6 +5570,77 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5354b7e7ba95c1448714f8e91da4ca0, type: 3}
+--- !u!1 &1723814850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1723814852}
+  - component: {fileID: 1723814851}
+  - component: {fileID: 1723814853}
+  m_Layer: 0
+  m_Name: Laser Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1723814851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723814850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b25494d6335444bb54c6e0de6f727cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _WeaponName: 
+  _BulletPoolSize: 1
+  _HasLocalPool: 1
+  _RandomiseBullets: 0
+  _BulletPrefabs:
+  - {fileID: 6708468163764771267, guid: 7fb704be965b8e54b83b462861c45617, type: 3}
+  _IsAlwaysOn: 1
+  _Length: 0
+  _ShotDelay: 1
+  _LengthCounter: 0
+  _ShotDelayCounter: 0
+--- !u!4 &1723814852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723814850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 9.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1723814853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723814850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9a7b176e154acd9fc8c7dc5ba6900f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Speed: 15
+  _ShouldStep: 0
+  _StepTimes: 0
+  _StepAngle: 0
 --- !u!4 &1731257598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f5354b7e7ba95c1448714f8e91da4ca0,
@@ -5725,7 +5796,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799925122}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 970c76a9d2d14eaea5f7ff9c466983cd, type: 3}
   m_Name: 
