@@ -17,6 +17,7 @@ namespace SoulEngine
 		private bool _WasFired = false; 
 		private Transform _Target = null;
 		private Collider2D _Collider2D = null;
+		private Transform _MoverComponent = null;
 
 		protected override void Awake ()
 		{
@@ -32,6 +33,7 @@ namespace SoulEngine
 		protected override void OnEnable ()
 		{
 			CacheTarget ();
+			
 			var position = SelectTargetPosition ();
 			SetupBullet ();
 			SetupMarker (ref position);
@@ -55,6 +57,7 @@ namespace SoulEngine
 		{
 			_Marker.gameObject.SetActive (true);
 			_Marker.position = position;
+			_Marker.SetParent (_MoverComponent);
 		}
 
 		protected override void OnDisable ()
@@ -83,9 +86,10 @@ namespace SoulEngine
 		private void Explode ()
 		{
 			_WasFired = true;
+			//TODO: Figure out what the hell and why the hell we have a collider2D
 			_Collider2D.enabled = false;
 			SetupExplosion (_Marker.position);
-			_Marker.gameObject.SetActive (false);
+			ResetMarker ();
 		}
 		
 		private void SetupExplosion (Vector3 position)
@@ -93,6 +97,12 @@ namespace SoulEngine
 			_Explosion.Construct (_Damage, _TagController.Tags);
 			_Explosion.transform.position = position;
 			_Explosion.gameObject.SetActive (true);
+		}
+
+		private void ResetMarker ()
+		{
+			_Marker.gameObject.SetActive (false);
+			_Marker.SetParent (_Transform);
 		}
 
 		protected override void EnteredCollider (Collider2D other)

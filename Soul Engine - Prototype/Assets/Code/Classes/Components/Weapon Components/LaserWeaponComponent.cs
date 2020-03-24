@@ -19,9 +19,9 @@ namespace SoulEngine
 		/// <summary>Determines if the weapon is currently a laser.</summary>
 		private bool _IsFiring = false;
 		/// <summary>Counter to determine how much time has elapsed for the fire length check.</summary>
-		[SerializeField] private float _LengthCounter = 0.0f;
+		private float _LengthCounter = 0.0f;
 		/// <summary>Counter to determine how much time has elapsed for the shot delay check.</summary>
-		[SerializeField] private float _ShotDelayCounter = 0.0f;
+		private float _ShotDelayCounter = 0.0f;
 		/// <summary>Reference to the laser projectile's transform component.</summary>
 		private Transform _Laser = null;
 
