@@ -41,6 +41,7 @@ namespace SoulEngine
 			_Transform = GetComponent<Transform> ();
 			GetComponent<Collider2D> ().isTrigger = true;
 			_TagController.Construct (this);
+			LevelSignals.OnBombExploded += OnBombExploded;
 		}
 
 		private void SetupRigidbody ()
@@ -59,6 +60,17 @@ namespace SoulEngine
 		protected virtual void OnDisable ()
 		{
 			CancelInvoke (nameof(Cull));
+		}
+		
+		protected virtual void OnDestroy ()
+		{
+			LevelSignals.OnBombExploded -= OnBombExploded;
+		}
+
+		protected virtual void OnBombExploded ()
+		{
+			if (gameObject.activeInHierarchy)
+				Cull ();
 		}
 
 		protected virtual void Cull ()

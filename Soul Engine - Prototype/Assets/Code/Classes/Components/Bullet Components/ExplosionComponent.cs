@@ -51,6 +51,8 @@ namespace SoulEngine
 			_Collider2D = GetComponent<CircleCollider2D> ();
 			_CachedScale = _Transform.localScale;
 			_TagComponent = GetComponent<TagComponent> ();
+			
+			LevelSignals.OnBombExploded += OnBombExploded;
 		}
 
 		private void OnEnable ()
@@ -66,6 +68,17 @@ namespace SoulEngine
 			CancelInvoke ();
 			StopAllCoroutines ();
 			_Transform.localScale = _CachedScale;
+		}
+
+		private void OnDestroy ()
+		{
+			LevelSignals.OnBombExploded -= OnBombExploded;
+		}
+
+		private void OnBombExploded ()
+		{
+			if (gameObject.activeInHierarchy)
+				Cull ();
 		}
 
 		IEnumerator ScaleTo (float endRadius)

@@ -3,6 +3,7 @@ using Random = UnityEngine.Random;
 
 namespace SoulEngine
 {
+	//TODO: This entire bullet type is ugly, consider a massive fix to this solution.
 	public class AOEProjectileComponent : BulletComponent
 	{
 		[Header ("AOE Settings")]
@@ -16,7 +17,6 @@ namespace SoulEngine
 
 		private bool _WasFired = false; 
 		private Transform _Target = null;
-		private Collider2D _Collider2D = null;
 		private Transform _MoverComponent = null;
 
 		protected override void Awake ()
@@ -24,9 +24,9 @@ namespace SoulEngine
 			base.Awake ();
 			
 			_Rigidbody2D.isKinematic = false;
-			_Collider2D = GetComponent<Collider2D> ();
-			_Explosion.gameObject.SetActive (false);
 			_Marker.gameObject.SetActive (false);
+			_Explosion.gameObject.SetActive (false);
+			GetComponent<Collider2D> ().enabled = false;
 		}
 
 		//TODO: Flak and AOE projectiles share many similarities consider sharing the code between the two or abstracting them into a seperate component.
@@ -49,7 +49,6 @@ namespace SoulEngine
 		private void SetupBullet ()
 		{
 			_WasFired = false;
-			_Collider2D.enabled = true;
 			_Transform.position = _Transform.parent.position;
 		}
 
@@ -64,8 +63,8 @@ namespace SoulEngine
 		{
 			base.OnDisable ();
 			
+			ResetMarker ();
 			CancelInvoke (nameof(Explode));
-			_Marker.gameObject.SetActive (false);
 		}
 
 		private Vector3 SelectTargetPosition ()
@@ -86,8 +85,6 @@ namespace SoulEngine
 		private void Explode ()
 		{
 			_WasFired = true;
-			//TODO: Figure out what the hell and why the hell we have a collider2D
-			_Collider2D.enabled = false;
 			SetupExplosion (_Marker.position);
 			ResetMarker ();
 		}
@@ -101,8 +98,8 @@ namespace SoulEngine
 
 		private void ResetMarker ()
 		{
-			_Marker.gameObject.SetActive (false);
 			_Marker.SetParent (_Transform);
+			_Marker.gameObject.SetActive (false);
 		}
 
 		protected override void EnteredCollider (Collider2D other)

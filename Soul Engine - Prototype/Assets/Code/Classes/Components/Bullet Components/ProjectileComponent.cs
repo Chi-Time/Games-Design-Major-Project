@@ -6,17 +6,6 @@ namespace SoulEngine
 {
     public class ProjectileComponent : BulletComponent, IRequireComponents
     {
-        public GameObject GameObject => gameObject;
-
-        public IEnumerable<Type> RequiredComponents ()
-        {
-            return new Type[]
-            {
-                typeof (Rigidbody2D),
-                typeof (Collider2D),
-            };
-        }
-
         protected override void EnteredCollider (Collider2D other)
         {
             Cull ();

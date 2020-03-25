@@ -16,7 +16,7 @@ namespace UnityEngine
 		/// <returns></returns>
 		public static bool IsNull (this UnityEngine.Object obj)
 		{
-			return (object) obj == null;
+			return obj == null;
 		}
 		
 		/// <summary>Returns true if the current object is NOT null.</summary>

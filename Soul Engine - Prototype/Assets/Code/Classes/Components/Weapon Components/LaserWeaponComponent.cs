@@ -7,6 +7,24 @@ namespace SoulEngine
 	//TODO: Maybe have the laser logic abstracted to the enemy where it decides how delayed to fire the next shot etc.
 	public class LaserWeaponComponent : WeaponComponent
 	{
+		public bool IsAlwaysOn
+		{
+			get => _IsAlwaysOn;
+			set => _IsAlwaysOn = value;
+		}
+		
+		public float Length
+		{
+			get => _Length;
+			set => _Length = value;
+		}
+
+		public float ShotDelay
+		{
+			get => _ShotDelay;
+			set => _ShotDelay = value;
+		}
+
 		[Header ("Laser Weapon Settings")]
 		[Space (2)]
 		[Tooltip ("Is the laser always firing?"), SerializeField]
@@ -16,7 +34,7 @@ namespace SoulEngine
 		[Tooltip ("How often does the weapon fire?"), SerializeField]
 		private float _ShotDelay = 0.0f;
 
-		/// <summary>Determines if the weapon is currently a laser.</summary>
+		/// <summary>Determines if the weapon is currently firing a laser.</summary>
 		private bool _IsFiring = false;
 		/// <summary>Counter to determine how much time has elapsed for the fire length check.</summary>
 		private float _LengthCounter = 0.0f;
@@ -30,8 +48,8 @@ namespace SoulEngine
 			_Laser = _BulletPools[0].Get ()?.transform;
 			
 			_Laser.gameObject.SetActive (false);
-			_Laser.position = _Transform.localPosition;
-			_Laser.localRotation = _Transform.localRotation;
+			_Laser.position = _Transform.position;
+			_Laser.localRotation = _Transform.rotation;
 		}
 
 		public override void Fire ()
@@ -73,9 +91,6 @@ namespace SoulEngine
 				return;
 			}
 
-			if (_IsFiring == false)
-				Fire ();
-			
 			if (HasFinished ())
 			{
 				_Laser.gameObject.SetActive (false);
@@ -103,6 +118,11 @@ namespace SoulEngine
 				_LengthCounter += Time.unscaledDeltaTime;
 			else 
 				_ShotDelayCounter += Time.unscaledDeltaTime;
+		}
+
+		private void OnDisable ()
+		{
+			_Laser.gameObject.SetActive (false);
 		}
 	}
 }

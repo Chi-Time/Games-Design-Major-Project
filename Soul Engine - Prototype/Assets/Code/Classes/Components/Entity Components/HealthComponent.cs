@@ -49,7 +49,7 @@ namespace SoulEngine
         {
             _Health += healAmount;
 
-            if (_Health >= _Max)
+            if (_Health >= _Max || _Health < 0)
                 _Health = _Max;
         }
     }

@@ -5,19 +5,10 @@ using UnityEngine;
 
 namespace SoulEngine
 {
-	public class AIWeaponComponent : MonoBehaviour, IRequireComponents
+	[RequireComponent (typeof (WeaponSystemComponent))]
+	public class AIWeaponComponent : MonoBehaviour
 	{
-		public GameObject GameObject => gameObject;
-
 		private WeaponSystemComponent _WeaponSystem = null;
-		
-		public IEnumerable<Type> RequiredComponents ()
-		{
-			return new Type[]
-			{
-				typeof (WeaponSystemComponent)
-			};
-		}
 
 		private void Awake ()
 		{

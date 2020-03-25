@@ -15,8 +15,6 @@ namespace SoulEngine
 		[Space (2)]
 		[Tooltip ("Is this projectile fired by the player?"), SerializeField]
 		private bool _IsPlayerProjectile = false;
-		[Tooltip ("The max distance a flak explosion can occur from the point of firing."), SerializeField]
-		private float _ExplosionDistance = 1.0f;
 		[Tooltip ("The image to display to the player where the explosion will happen."), SerializeField]
 		private Transform _Marker = null;
 		[Tooltip ("The explosion to spawn upon detonation."), SerializeField]

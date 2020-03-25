@@ -13,8 +13,6 @@ namespace SoulEngine
 		private int _Score = 0;
 		[Tooltip ("The value of this resource upon being collected."), SerializeField]
 		private int _Value = 0;
-		[Tooltip ("The distance away from the player before being collected."), SerializeField]
-		private float _Distance = 0.25f;
 		[Tooltip ("The various tags this component should look for."), SerializeField]
 		private TagController _TagController = new TagController ();
 

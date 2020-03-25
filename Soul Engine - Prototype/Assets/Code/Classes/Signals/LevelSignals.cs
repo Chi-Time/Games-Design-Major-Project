@@ -7,6 +7,7 @@ namespace SoulEngine
 	{
 		public static Action OnGamePaused;
 		public static Action OnLevelFailed;
+		public static Action OnBombExploded;
 		public static Action OnLevelComplete;
 		public static Action OnPerspectiveSwitched;
 		public static Action<int> OnScoreIncreased;

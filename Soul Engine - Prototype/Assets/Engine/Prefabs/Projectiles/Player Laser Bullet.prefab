@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1757512772776165799}
   - component: {fileID: 1757512772776165800}
   m_Layer: 0
-  m_Name: Laser Bullet
+  m_Name: Player Laser Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,11 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Damage: 10
-  _Range: 7.5
+  _Range: 5
   _DamageRegulator:
     _Interval: 0.5
   _TagController:
-    _Tags: 05000000
+    _Tags: 07000000
 --- !u!114 &1757512772776165800
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,8 +8,6 @@ namespace SoulEngine
     {
         public GameObject GameObject => gameObject;
         
-        [Tooltip("Should the component use the keyboard for input?"), SerializeField]
-        private bool _UseKeyboard = true;
         [Tooltip ("The button to use for firing the weapon on keyboard/mouse.")] [SerializeField]
         private KeyCode _KeyboardKey = KeyCode.Mouse0;
         [Tooltip ("The button to use for firing the weapon on controller/joystick.")] [SerializeField]

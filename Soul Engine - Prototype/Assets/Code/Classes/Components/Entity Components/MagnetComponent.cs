@@ -10,9 +10,6 @@ namespace SoulEngine
 	{
 		public GameObject GameObject => gameObject;
 
-		[Tooltip ("How fast does the magnetised object move toward the player."), SerializeField]
-		private float _Speed = 0.0f;
-
 		private Transform _Transform = null;
 		private Rigidbody2D _Rigidbody2D = null;
 		private TagComponent _TagComponent = null;

@@ -44,7 +44,7 @@ namespace SoulEngine
 		{
 			if (other.HasTags (_TagController.Tags))
 			{
-				this.gameObject.SetActive (false);
+				gameObject.SetActive (false);
 				LevelSignals.OnEntityHit?.Invoke (this, other.gameObject);
 			}
 		}
@@ -53,12 +53,14 @@ namespace SoulEngine
 		{
 			LevelSignals.OnEntityHit += OnEntityHit;
 			LevelSignals.OnEntityKilled += OnEntityKilled;
+			LevelSignals.OnBombExploded += OnBombExploded;
 		}
 
 		protected virtual void OnDestroy ()
 		{
 			LevelSignals.OnEntityHit -= OnEntityHit;
 			LevelSignals.OnEntityKilled -= OnEntityKilled;
+			LevelSignals.OnBombExploded -= OnBombExploded;
 		}
 
 		protected virtual void OnEntityHit (IDamage damage, GameObject other)
@@ -75,6 +77,12 @@ namespace SoulEngine
 			{
 				_ItemDrop.Drop ();
 			}
+		}
+
+		protected virtual void OnBombExploded ()
+		{
+			if (gameObject.activeInHierarchy)
+				_Health.TakeDamage (int.MaxValue);
 		}
 	}
 }
