@@ -44,17 +44,37 @@ namespace SoulEngine
 		
 		private void Update ()
 		{
-			if (_TrackTarget)
-			{
-				_Transform.up = _Target.position - _Transform.position;
-			}
+			if (_TrackTarget == false)
+				return;
 
-			
-			//TODO: Normalise missile as it currently moves incredibly fast on diagonals
-			var velocity = _Speed * Time.deltaTime;
-			var delta = _Transform.up * velocity;
+			FaceTarget ();
+		}
 
-			_Rigidbody2D.MovePosition (_Rigidbody2D.position + (Vector2)delta);
+		private void FaceTarget ()
+		{
+			_Transform.up = _Target.position - _Transform.position;
+		}
+
+		private void FixedUpdate ()
+		{
+			Move ();
+		}
+
+		private void Move ()
+		{
+			var velocity = CalculateVelocity ();
+			_Rigidbody2D.MovePosition (_Rigidbody2D.position + velocity);
+		}
+
+		private Vector2 CalculateVelocity ()
+		{
+			Vector2 velocity = _Transform.up * ( _Speed * Time.deltaTime );
+
+			// Clamp max magnitude so that we don't have diagonal speedups.
+			if (velocity.magnitude > 1.0f)
+				velocity.Normalize ();
+
+			return velocity;
 		}
 
 		private void TrackTarget ()

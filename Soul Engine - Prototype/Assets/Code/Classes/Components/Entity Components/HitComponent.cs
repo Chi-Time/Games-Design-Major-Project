@@ -42,9 +42,11 @@ namespace SoulEngine
 
 		private void OnEntityHit (IDamage damge, GameObject other)
 		{
+			//BUG: Gives an error because it tries to start when disabled. 
 			if (other.GetInstanceID () == _LogicObject.GetInstanceID () && _IsFlashing == false)
 			{
-				StartCoroutine (Flash (_FlashColor, _FlashLength));
+				if (isActiveAndEnabled)
+					StartCoroutine (Flash (_FlashColor, _FlashLength));
 			}
 		}
 
@@ -79,7 +81,8 @@ namespace SoulEngine
 			}
 			else
 			{
-				StartCoroutine (Flash (startColor, length));
+				if (isActiveAndEnabled)
+					StartCoroutine (Flash (startColor, length));
 			}
 		}
 	}

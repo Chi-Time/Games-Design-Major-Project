@@ -7270,6 +7270,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1618618460}
     m_Modifications:
+    - target: {fileID: 89691925162161541, guid: 175f4dc7c956e144080d07845ce3e300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 557256377259494417, guid: 175f4dc7c956e144080d07845ce3e300,
         type: 3}
       propertyPath: _ControllerKey
@@ -13550,7 +13555,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618618459}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 970c76a9d2d14eaea5f7ff9c466983cd, type: 3}
   m_Name: 

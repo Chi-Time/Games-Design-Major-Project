@@ -220,5 +220,10 @@ namespace UnityEngine
 		{
 			return new Vector3 (vector3.x, vector3.y, z);
 		}
+
+		public static void Face (this Transform transform, Transform target)
+		{
+			transform.up = target.position - transform.position;
+		}
 	}
 }
