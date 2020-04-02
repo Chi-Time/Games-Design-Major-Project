@@ -8,8 +8,7 @@ namespace SoulEngine
 	{
 		[Tooltip ("How long should the laser fire for?"), SerializeField]
 		private float _Length = 0.0f;
-
-		private Transform _LaserBullet = null;
+		
 		private LaserWeaponComponent _LaserWeaponComponent = null;
 
 		private void Awake ()

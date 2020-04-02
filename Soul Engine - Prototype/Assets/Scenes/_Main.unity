@@ -442,7 +442,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176625062}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9636f866131f39f4fb6db83b2da1f068, type: 3}
@@ -8024,6 +8024,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 590757764532583725, guid: 175f4dc7c956e144080d07845ce3e300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2787943856423757400, guid: 175f4dc7c956e144080d07845ce3e300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002075547244779748, guid: 175f4dc7c956e144080d07845ce3e300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3169730861566954639, guid: 175f4dc7c956e144080d07845ce3e300,
         type: 3}
       propertyPath: _Length
@@ -8039,9 +8054,19 @@ PrefabInstance:
       propertyPath: _MinorAbility
       value: 
       objectReference: {fileID: 1329102743}
+    - target: {fileID: 5945343510437356176, guid: 175f4dc7c956e144080d07845ce3e300,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5995004380106357640, guid: 175f4dc7c956e144080d07845ce3e300,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7715215941637404198, guid: 175f4dc7c956e144080d07845ce3e300,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9046696033324618751, guid: 175f4dc7c956e144080d07845ce3e300,
