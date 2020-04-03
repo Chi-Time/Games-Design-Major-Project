@@ -4,6 +4,7 @@
 	{
 		void Enter (T agent);
 		void Execute (T agent);
+		void PhysicsExecute (T agent);
 		void Exit (T agent);
 	}
 }
