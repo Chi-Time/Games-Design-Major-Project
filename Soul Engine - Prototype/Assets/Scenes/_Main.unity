@@ -1202,20 +1202,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 273655710628962938, guid: 0bf685ce8453e2440998c2ddddb0a5a5,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 273655710628962940, guid: 0bf685ce8453e2440998c2ddddb0a5a5,
         type: 3}
       propertyPath: m_Name
       value: Civilian (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 273655710628962940, guid: 0bf685ce8453e2440998c2ddddb0a5a5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf685ce8453e2440998c2ddddb0a5a5, type: 3}

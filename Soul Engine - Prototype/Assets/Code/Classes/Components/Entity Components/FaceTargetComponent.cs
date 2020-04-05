@@ -12,8 +12,12 @@ namespace SoulEngine
 
 		private void Awake ()
 		{
-			FindTarget ();
 			_Transform = GetComponent<Transform> ();
+		}
+
+		private void Start ()
+		{
+			FindTarget ();	
 		}
 
 		private void FindTarget ()
@@ -26,16 +30,11 @@ namespace SoulEngine
 
 		private void Update ()
 		{
-			LookAt ();
-		}
-
-		private void LookAt ()
-		{
 			//BUG: Find a way to use a boolean for the null check instead as Unity's own overload is terrible.
 			if (_Target == null)
 				return;
 
-			_Transform.up = _Target.position - _Transform.position;
+			_Transform.Face (_Target);
 		}
 	}
 }

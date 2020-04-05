@@ -7,7 +7,6 @@ namespace SoulEngine
 	[RequireComponent (typeof (OutlineComponent))]
 	public class GrazeComponent : MonoBehaviour
 	{
-		[Header ("Graze Settings")]
 		[Tooltip ("The score to award the player whilst grazing."), SerializeField]
 		private int _Score = 0;
 		[Tooltip ("The interval for each amount of score to be awarded."), SerializeField]
