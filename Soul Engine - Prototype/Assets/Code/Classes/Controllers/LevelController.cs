@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Time = Code.Classes.Utilities.Time;
 
 namespace SoulEngine
 {
@@ -19,6 +20,8 @@ namespace SoulEngine
 		private int _EnemiesKilled = 0;
 		[SerializeField]
 		private bool _HitTaken = false;
+		[SerializeField]
+		private Time _ElapsedTime = Time.Zero;
 		[SerializeField]
 		private LevelStates _CurrentState = LevelStates.Play;
 
@@ -41,7 +44,7 @@ namespace SoulEngine
 
 		private void OnScoreIncreased (int score)
 		{
-			if (_Score > 0)
+			if (score > 0)
 				_Score += score;
 		}
 
@@ -54,7 +57,7 @@ namespace SoulEngine
 		private void OnResourcesCollected (int resources)
 		{
 			if (resources > 0)
-				_RescuedEntities += resources;
+				_ResourcesCollected += resources;
 		}
 
 		private void OnEntityHit (IDamage damage, GameObject other)
@@ -97,6 +100,8 @@ namespace SoulEngine
 
 		private void Update ()
 		{
+			_ElapsedTime.Tick ();
+			
 			if (Input.GetKeyDown (KeyCode.R))
 			{
 				SceneManager.LoadScene (SceneManager.GetActiveScene ().name);

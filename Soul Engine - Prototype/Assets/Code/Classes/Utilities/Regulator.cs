@@ -20,6 +20,7 @@ namespace Utilities
 		public Regulator (float interval)
 		{
 			_Interval = interval;
+			_Clock = interval;
 		}
 		
 		/// <summary>Determines if an interval has elapsed.</summary>
