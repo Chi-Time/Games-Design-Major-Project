@@ -31,19 +31,18 @@ namespace SoulEngine
 			_Transform = GetComponent <Transform> ();
 			_ScoringRegulator = new Regulator (_ScoreInterval);
 			_GrazeCircle = new Circle (_GrazeRadius, _Transform);
-			
-			SetupOutline ();
-		}
-
-		private void SetupOutline ()
-		{
-			_Outline = GetComponent<OutlineComponent> ();
-			_Outline.Resize (_GrazeRadius);
 		}
 
 		private void Start ()
 		{
+			SetupOutline ();
 			_Target = FindObjectOfType<PlayerController> ().transform;	
+		}
+		
+		private void SetupOutline ()
+		{
+			_Outline = GetComponent<OutlineComponent> ();
+			_Outline.Resize (_GrazeRadius);
 		}
 
 		private void Update ()
