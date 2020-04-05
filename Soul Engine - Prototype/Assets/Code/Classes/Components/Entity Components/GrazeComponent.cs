@@ -22,25 +22,23 @@ namespace SoulEngine
 		[Tooltip ("How low the alpha is when invisible"), SerializeField]
 		private float _OutlineInvisible = 0.0f;
 		
+		private Circle _GrazeCircle;
 		/// <summary>Reference to the player position.</summary>
 		private Transform _Target = null;
 		/// <summary>Reference to this object's transform component.</summary>
 		private Transform _Transform = null;
-		/// <summary>Cached value for the graze radius</summary>
-		private float _GrazeRadiusSquared = 0.0f;
 		/// <summary>Regulator for awarding score at intervals.</summary>
 		private Regulator _ScoringRegulator = null;
 		/// <summary>Transform component of graze outline.</summary>
 		private Transform _OutlineTransform = null;
 		/// <summary>Renderer component of graze outline.</summary>
 		private SpriteRenderer _OutlineRenderer = null;
-		/// <summary>The current distance the player is from the bullet.</summary>
-		private float _CurrentDistance = float.MaxValue;
 
 		private void Awake ()
 		{
 			_Transform = GetComponent <Transform> ();
 			_ScoringRegulator = new Regulator (_ScoreInterval);
+			_GrazeCircle = new Circle (_GrazeRadius, _Transform);
 			
 			SetupOutline ();
 		}
@@ -56,40 +54,26 @@ namespace SoulEngine
 
 		private void Start ()
 		{
-			// Cache the squared radius of this object.
-			_GrazeRadiusSquared = _GrazeRadius * _GrazeRadius;
 			_Target = FindObjectOfType<PlayerController> ().transform;	
 		}
 
 		private void Update ()
 		{
-			SetCurrentDistance ();
-			SetOutlineAlpha ();
-			UpdateScore ();
-		}
-
-		private void SetCurrentDistance ()
-		{
-			_CurrentDistance = Mathy.SqrDistance (_Transform.position, _Target.position);
-		}
-
-		private void SetOutlineAlpha ()
-		{
-			//TODO: Remove this additional if branch as we're doing the same check twice when we could save performance and do it once.
-			_OutlineRenderer.color = _OutlineRenderer.color.Alpha (IsGrazing () ? _OutlineVisible : _OutlineInvisible);
-		}
-
-		private void UpdateScore ()
-		{
-			if (IsGrazing () && _ScoringRegulator.HasElapsed (true))
+			// Are we intersecting with the target?
+			if (_GrazeCircle.IsIntersecting (_Target))
 			{
-				LevelSignals.OnScoreIncreased?.Invoke (_Score);
+				// Show the graze outline.
+				_OutlineRenderer.color = _OutlineRenderer.color.Alpha (_OutlineVisible);
+				
+				// If we can increase the score, then do so.
+				if (_ScoringRegulator.HasElapsed (true))
+					LevelSignals.OnScoreIncreased?.Invoke (_Score);
 			}
-		}
-
-		private bool IsGrazing ()
-		{
-			return _CurrentDistance < _GrazeRadiusSquared;
+			else
+			{
+				// Hide the graze outline.
+				_OutlineRenderer.color = _OutlineRenderer.color.Alpha (_OutlineInvisible);
+			}
 		}
 	}
 }

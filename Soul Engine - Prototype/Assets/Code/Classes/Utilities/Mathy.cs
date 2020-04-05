@@ -2,9 +2,10 @@
 
 namespace Code.Classes.Utilities
 {
+	/// <summary>Custom Math Extensions for Unity.</summary>
 	public static class Mathy
 	{
-		/// <summary>Returns the distance between two Vector3's.</summary>
+		/// <summary>Calculates the distance between two positions.</summary>
 		/// <param name="a">The position of the caller.</param>
 		/// <param name="b">The position of the target.</param>
 		/// <returns>The distance between the two positions.</returns>
@@ -16,7 +17,7 @@ namespace Code.Classes.Utilities
 			return ( dx * dx ) + ( dy * dy );
 		}
 
-		/// <summary>Returns the distance between two Vector3's.</summary>
+		/// <summary>Calculates the distance between two positions.</summary>
 		/// <param name="a">The position of the caller.</param>
 		/// <param name="b">The position of the target.</param>
 		/// <returns>The distance between the two positions.</returns>
@@ -53,6 +54,10 @@ namespace Code.Classes.Utilities
 			return sqrDist <= sqrRadius;
 		}
 
+		/// <summary>Compares the given position of a circle and a point to determine if they intersect.</summary>
+		/// <param name="a">The caller.</param>
+		/// <param name="b">The target point.</param>
+		/// <returns>True if point is in circle radius, false if not.</returns>
 		public static bool IsInRadius (Circle a, Vector2 b)
 		{
 			var sqrDist = SqrDistance (a.Center, b);
@@ -60,6 +65,10 @@ namespace Code.Classes.Utilities
 			return sqrDist < a.SqrRadius;
 		}
 
+		/// <summary>Compares the given position of a circle and a point to determine if they intersect.</summary>
+		/// <param name="a">The caller.</param>
+		/// <param name="b">The target point.</param>
+		/// <returns>True if point is in circle radius, false if not.</returns>
 		public static bool IsInRadius (Circle a, Vector3 b)
 		{
 			var sqrDist = SqrDistance ((Vector3)a.Center, b);
